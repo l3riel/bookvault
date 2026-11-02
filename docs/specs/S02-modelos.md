@@ -1,7 +1,7 @@
 # Spec — Modelos e estruturas de dados (Etapa 02)
 
 - **ID:** Etapa 02 do [Plano de Execução](../PLANO.md) (base de F1–F5 do `docs/PRD.md`)
-- **Status:** rascunho
+- **Status:** aprovada
 - **Pastas:** `lib/models/`, `test/models/`
 
 ## Objetivo
@@ -30,7 +30,7 @@ Nenhuma tela nesta etapa.
 ReadingStatus (enum)
   wantToRead  → JSON 'want_to_read' · rótulo 'Quero ler'
   reading     → JSON 'reading'      · rótulo 'Lendo'
-  completed   → JSON 'completed'    · rótulo 'Lido'
+  completed   → JSON 'completed'    · rótulo 'Concluído'
 
 Book
   id            String        obrigatório (volumeId)
@@ -57,6 +57,7 @@ UserPreferences
 - [ ] Dado um `Book` completo, quando faço `toJson` e depois `fromJson`, então obtenho um `Book` igual ao original.
 - [ ] Dado um JSON de `Book` só com `id` e `title`, quando faço `fromJson`, então os opcionais são `null` e as listas vêm vazias.
 - [ ] Dado um JSON de `Book` sem `id` ou sem `title`, quando faço `fromJson`, então é lançado `FormatException`.
+- [ ] Dado um JSON de `UserBook` com status desconhecido, quando faço `fromJson`, então é lançado `FormatException`.
 - [ ] Dado cada `ReadingStatus`, quando converto para JSON e de volta, então obtenho o mesmo valor; e cada um tem o rótulo pt-BR da tabela.
 - [ ] Dado um `UserBook`, quando faço `toJson`/`fromJson`, então o snapshot do livro, o status e `addedAt` são preservados.
 - [ ] Dado um `UserBook`, quando chamo `copyWith(status: ReadingStatus.reading)`, então só o status muda.
@@ -66,7 +67,7 @@ UserPreferences
 ## Fora de escopo desta spec
 Persistência (Etapa 03), DTO e conversão da Google Books (Etapa 04), lista de gêneros do onboarding (Etapa 05).
 
-## Pendências para aprovar
-1. **Status desconhecido no JSON** (ex.: dado corrompido): lançar `FormatException` (proposta) ou cair em `Quero ler`?
-2. **Rótulo de `completed`:** "Lido" (proposta; o filtro da biblioteca diz "Lidos") ou "Concluído"?
-3. **Gêneros** em `UserPreferences`: texto livre (proposta; a lista fixa vem na Etapa 05) ou enum já agora?
+## Decisões do arquiteto
+1. Status desconhecido no JSON lança `FormatException`.
+2. Rótulo de `completed`: **Concluído** (filtro da biblioteca: "Concluídos").
+3. Gêneros em `UserPreferences` são texto livre; a lista fixa vem na Etapa 05.

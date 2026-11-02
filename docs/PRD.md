@@ -19,7 +19,7 @@ Leitores que querem descobrir livros pelos gêneros de que gostam e manter uma e
 |---|---|---|---|
 | F0 | Preparação: tema, rotas, estrutura e injeção de dependências | Must | [S01](specs/S01-preparacao.md) |
 | F1 | Onboarding: nome e um ou mais gêneros, salvos no aparelho; só aparece no primeiro acesso | Must | — |
-| F2 | Biblioteca pessoal: listar, filtrar por status (Todos, Quero ler, Lendo, Lidos), mudar status, remover | Must | — |
+| F2 | Biblioteca pessoal: listar, filtrar por status (Todos, Quero ler, Lendo, Concluídos), mudar status, remover | Must | — |
 | F3 | Explore: busca por título ou autor na Google Books API, resultados em grid | Must | — |
 | F4 | Detalhes do livro: capa, título, autores, descrição, editora, data, páginas; adicionar/remover da biblioteca | Must | — |
 | F5 | Home: saudação com o nome e recomendações pelos gêneros escolhidos | Must | — |
