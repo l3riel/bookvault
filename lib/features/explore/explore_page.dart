@@ -20,8 +20,12 @@ class ExplorePage extends StatefulWidget {
   const ExplorePage({
     required this.createStore,
     required this.libraryStore,
+    this.initialQuery,
     super.key,
   });
+
+  /// Termo vindo da rota (`/explore?q=`): busca assim que chega.
+  final String? initialQuery;
 
   final ExploreStore Function() createStore;
   final LibraryStore libraryStore;
@@ -33,6 +37,26 @@ class ExplorePage extends StatefulWidget {
 class _ExplorePageState extends State<ExplorePage> {
   late final ExploreStore _store = widget.createStore();
   final TextEditingController _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _searchFromRoute(widget.initialQuery);
+  }
+
+  @override
+  void didUpdateWidget(ExplorePage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialQuery != oldWidget.initialQuery) {
+      _searchFromRoute(widget.initialQuery);
+    }
+  }
+
+  void _searchFromRoute(String? query) {
+    if (query == null || query.trim().isEmpty) return;
+    _controller.text = query;
+    _store.search(query);
+  }
 
   @override
   void dispose() {

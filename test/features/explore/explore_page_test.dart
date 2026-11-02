@@ -1,3 +1,4 @@
+import 'package:bookvault/app/router.dart';
 import 'package:bookvault/features/book_details/book_details_page.dart';
 import 'package:bookvault/features/explore/widgets/search_result_card.dart';
 import 'package:bookvault/models/book.dart';
@@ -149,5 +150,16 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(BookDetailsPage), findsOneWidget);
+  });
+
+  testWidgets('termo vindo da rota já busca', (tester) async {
+    final app = await openExplore(tester, api: (options) => jsonBody(twoBooks));
+
+    app.router.go(AppRoutes.exploreSearch('Fantasia'));
+    await tester.pumpAndSettle();
+
+    expect(app.api.requests.single.queryParameters['q'], 'Fantasia');
+    expect(find.widgetWithText(TextField, 'Fantasia'), findsOneWidget);
+    expect(find.text('2 resultados'), findsOneWidget);
   });
 }

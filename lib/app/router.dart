@@ -23,6 +23,10 @@ abstract final class AppRoutes {
   static const String bookDetails = '/book/:id';
 
   static String bookDetailsOf(String id) => '/book/${Uri.encodeComponent(id)}';
+
+  /// Explorar já buscando [term] (usado pelo "Ver todos" da Home).
+  static String exploreSearch(String term) =>
+      Uri(path: explore, queryParameters: {'q': term}).toString();
 }
 
 /// Cria o roteador do app.
@@ -54,6 +58,7 @@ GoRouter createAppRouter(AppDependencies dependencies) {
           _branch(
             AppRoutes.explore,
             (context, state) => ExplorePage(
+              initialQuery: state.uri.queryParameters['q'],
               createStore: () => ExploreStore(
                 dependencies.booksRepository,
                 suggestions: [
