@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_dependencies.dart';
@@ -26,6 +27,10 @@ class BookVaultApp extends StatelessWidget {
       title: 'BookVault',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.dark,
+      // Rótulos do Material e leitor de tela em português (ADR 0008).
+      locale: const Locale('pt', 'BR'),
+      supportedLocales: const [Locale('pt', 'BR')],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       routerConfig: router,
       builder: (context, child) => ColoredBox(
         color: AppColors.surfaceBase,
