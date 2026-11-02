@@ -36,12 +36,14 @@ class TestApp {
 ///
 /// Com [preferences] nulo, simula o primeiro acesso. [library] já vem salva.
 /// [api] responde às chamadas da Google Books; sem ele, toda chamada falha
-/// como "sem conexão".
+/// como "sem conexão". As requisições feitas ao abrir (recomendações da Home)
+/// são descartadas de `api.requests`, salvo com [keepStartupRequests].
 Future<TestApp> pumpBookVault(
   WidgetTester tester, {
   UserPreferences? preferences = onboardedUser,
   List<UserBook> library = const [],
   FakeHandler? api,
+  bool keepStartupRequests = false,
 }) async {
   tester.view
     ..physicalSize = const Size(1080, 2400)
@@ -68,5 +70,6 @@ Future<TestApp> pumpBookVault(
     BookVaultApp(dependencies: dependencies, router: router),
   );
   await tester.pumpAndSettle();
+  if (!keepStartupRequests) adapter.requests.clear();
   return TestApp(dependencies, router, adapter);
 }

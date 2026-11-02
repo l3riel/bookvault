@@ -5,6 +5,7 @@ import '../models/book.dart';
 import '../models/genre.dart';
 import '../stores/book_details_store.dart';
 import '../stores/explore_store.dart';
+import '../stores/home_store.dart';
 import '../stores/onboarding_store.dart';
 import 'app_dependencies.dart';
 import 'app_shell.dart';
@@ -54,7 +55,17 @@ GoRouter createAppRouter(AppDependencies dependencies) {
         builder: (context, state, navigationShell) =>
             AppShell(navigationShell: navigationShell),
         branches: [
-          _branch(AppRoutes.home, (context, state) => const HomePage()),
+          _branch(
+            AppRoutes.home,
+            (context, state) => HomePage(
+              createStore: () => HomeStore(
+                preferences: preferences,
+                books: dependencies.booksRepository,
+                now: DateTime.now,
+              ),
+              libraryStore: dependencies.libraryStore,
+            ),
+          ),
           _branch(
             AppRoutes.explore,
             (context, state) => ExplorePage(
