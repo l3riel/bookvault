@@ -1,6 +1,9 @@
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
+import '../models/book.dart';
 import '../models/genre.dart';
+import '../stores/book_details_store.dart';
 import '../stores/explore_store.dart';
 import '../stores/onboarding_store.dart';
 import 'app_dependencies.dart';
@@ -69,8 +72,20 @@ GoRouter createAppRouter(AppDependencies dependencies) {
       ),
       GoRoute(
         path: AppRoutes.bookDetails,
-        builder: (context, state) =>
-            BookDetailsPage(bookId: state.pathParameters['id']!),
+        builder: (context, state) {
+          final bookId = state.pathParameters['id']!;
+          final extra = state.extra;
+          return BookDetailsPage(
+            key: ValueKey(bookId),
+            createStore: () => BookDetailsStore(
+              bookId: bookId,
+              books: dependencies.booksRepository,
+              library: dependencies.libraryStore,
+              // O resultado da busca já traz o livro; link direto não.
+              initialBook: extra is Book && extra.id == bookId ? extra : null,
+            ),
+          );
+        },
       ),
     ],
   );

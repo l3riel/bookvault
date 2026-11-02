@@ -67,6 +67,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(BookDetailsPage), findsOneWidget);
-    expect(find.text('zyTCAlFPjgYC'), findsOneWidget);
+    expect(find.byKey(const ValueKey('zyTCAlFPjgYC')), findsOneWidget);
   });
 }

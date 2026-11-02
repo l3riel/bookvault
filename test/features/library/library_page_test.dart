@@ -167,7 +167,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(BookDetailsPage), findsOneWidget);
-    expect(find.text('dune'), findsOneWidget);
+    expect(find.text('Autor dune'), findsOneWidget);
   });
 
   testWidgets('livro sem capa mostra o marcador', (tester) async {
