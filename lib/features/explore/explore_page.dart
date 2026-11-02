@@ -64,6 +64,7 @@ class _ExplorePageState extends State<ExplorePage> {
     return Scaffold(
       appBar: const BrandAppBar(showSearch: false),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(
