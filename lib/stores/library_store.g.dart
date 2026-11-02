@@ -50,6 +50,19 @@ mixin _$LibraryStore on _LibraryStore, Store {
     });
   }
 
+  late final _$addAsyncAction = AsyncAction(
+    '_LibraryStore.add',
+    context: context,
+  );
+
+  @override
+  Future<void> add(
+    Book book, {
+    ReadingStatus status = ReadingStatus.wantToRead,
+  }) {
+    return _$addAsyncAction.run(() => super.add(book, status: status));
+  }
+
   late final _$changeStatusAsyncAction = AsyncAction(
     '_LibraryStore.changeStatus',
     context: context,

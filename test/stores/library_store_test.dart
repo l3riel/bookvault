@@ -67,4 +67,17 @@ void main() {
     expect(store.books.map((b) => b.id), ['1984', 'dune']);
     expect(repository.contains('hobbit'), isFalse);
   });
+
+  test('adiciona livro no topo como Quero ler e grava', () async {
+    await store.add(const Book(id: 'lotr', title: 'O Senhor dos Anéis'));
+
+    expect(store.books.first.id, 'lotr');
+    expect(store.savedBook('lotr')?.status, ReadingStatus.wantToRead);
+    expect(repository.contains('lotr'), isTrue);
+  });
+
+  test('savedBook devolve null para livro fora da biblioteca', () {
+    expect(store.savedBook('nada'), isNull);
+    expect(store.savedBook('dune')?.book.title, 'Duna');
+  });
 }
