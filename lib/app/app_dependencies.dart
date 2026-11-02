@@ -2,17 +2,23 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/network/dio_client.dart';
+import '../core/storage/local_storage.dart';
+import '../data/repositories/library_repository.dart';
+import '../data/repositories/preferences_repository.dart';
 
 /// Objetos compartilhados do app, criados uma vez no `main` e repassados pelo
 /// construtor (injeção manual, sem service locator).
-///
-/// Repositórios e Stores das próximas etapas são montados aqui a partir
-/// destes objetos.
 class AppDependencies {
-  const AppDependencies({required this.preferences, required this.dio});
+  AppDependencies({required SharedPreferences preferences, required this.dio})
+    : localStorage = LocalStorage(preferences) {
+    libraryRepository = LibraryRepository(storage: localStorage);
+    preferencesRepository = PreferencesRepository(storage: localStorage);
+  }
 
-  final SharedPreferences preferences;
   final Dio dio;
+  final LocalStorage localStorage;
+  late final LibraryRepository libraryRepository;
+  late final PreferencesRepository preferencesRepository;
 
   static Future<AppDependencies> create() async {
     final preferences = await SharedPreferences.getInstance();
