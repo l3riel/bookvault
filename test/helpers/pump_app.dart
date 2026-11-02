@@ -23,19 +23,25 @@ const UserPreferences onboardedUser = UserPreferences(
 
 /// App montado para teste de widget.
 class TestApp {
-  const TestApp(this.dependencies, this.router);
+  const TestApp(this.dependencies, this.router, this.api);
 
   final AppDependencies dependencies;
   final GoRouter router;
+
+  /// Requisições feitas à Google Books (falsa).
+  final FakeHttpAdapter api;
 }
 
 /// Monta o app inteiro em tela de celular (360×800), sem rede.
 ///
 /// Com [preferences] nulo, simula o primeiro acesso. [library] já vem salva.
+/// [api] responde às chamadas da Google Books; sem ele, toda chamada falha
+/// como "sem conexão".
 Future<TestApp> pumpBookVault(
   WidgetTester tester, {
   UserPreferences? preferences = onboardedUser,
   List<UserBook> library = const [],
+  FakeHandler? api,
 }) async {
   tester.view
     ..physicalSize = const Size(1080, 2400)
@@ -50,14 +56,17 @@ Future<TestApp> pumpBookVault(
         for (final userBook in library) userBook.toJson(),
       ]),
   });
+  final adapter = FakeHttpAdapter(
+    api ?? failWith(DioExceptionType.connectionError),
+  );
   final dependencies = AppDependencies(
     preferences: prefs,
-    dio: fakeDio(FakeHttpAdapter(failWith(DioExceptionType.connectionError))),
+    dio: fakeDio(adapter),
   );
   final router = createAppRouter(dependencies);
   await tester.pumpWidget(
     BookVaultApp(dependencies: dependencies, router: router),
   );
   await tester.pumpAndSettle();
-  return TestApp(dependencies, router);
+  return TestApp(dependencies, router, adapter);
 }

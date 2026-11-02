@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 
+import '../models/genre.dart';
+import '../stores/explore_store.dart';
 import '../stores/onboarding_store.dart';
 import 'app_dependencies.dart';
 import 'app_shell.dart';
@@ -46,7 +48,19 @@ GoRouter createAppRouter(AppDependencies dependencies) {
             AppShell(navigationShell: navigationShell),
         branches: [
           _branch(AppRoutes.home, (context, state) => const HomePage()),
-          _branch(AppRoutes.explore, (context, state) => const ExplorePage()),
+          _branch(
+            AppRoutes.explore,
+            (context, state) => ExplorePage(
+              createStore: () => ExploreStore(
+                dependencies.booksRepository,
+                suggestions: [
+                  for (final key in preferences.load()?.genres ?? <String>[])
+                    ?Genre.fromKey(key),
+                ],
+              ),
+              libraryStore: dependencies.libraryStore,
+            ),
+          ),
           _branch(
             AppRoutes.library,
             (context, state) => LibraryPage(store: dependencies.libraryStore),
