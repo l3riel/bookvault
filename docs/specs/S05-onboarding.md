@@ -1,7 +1,7 @@
 # Spec — Onboarding (Etapa 05)
 
 - **ID:** F1 do `docs/PRD.md` · Etapa 05 do [Plano de Execução](../PLANO.md)
-- **Status:** rascunho
+- **Status:** aprovada
 - **Pastas:** `lib/features/onboarding/`, `lib/stores/onboarding_store.dart`, `lib/models/genre.dart`, `lib/app/router.dart`
 - **Referência visual:** [`design/onboarding.png`](../../design/onboarding.png)
 
@@ -63,7 +63,7 @@ Sem modelo novo além do enum `Genre`. Grava `UserPreferences(name, genres: [cha
 - [ ] Dado o primeiro acesso (sem preferências), quando o app abre, então aparece o onboarding.
 - [ ] Dadas preferências salvas, quando o app abre, então aparece o Início.
 - [ ] Dado o onboarding, quando seleciono dois gêneros, então o contador mostra "2 selecionados"; tocar de novo num gênero o desmarca.
-- [ ] Dado nome vazio (ou só espaços) ou nenhum gênero, então não é possível concluir (ver pendência 1).
+- [ ] Dado nome vazio (ou só espaços) ou nenhum gênero, então o botão "Começar" fica desabilitado.
 - [ ] Dado nome "  Gabriel  " e o gênero Fantasia, quando toco em Começar, então é salvo `UserPreferences(name: 'Gabriel', genres: ['fantasy'])` e o app vai para o Início.
 - [ ] Dado o onboarding concluído, quando o app é reaberto, então abre direto no Início.
 - [ ] Cada `Genre` tem rótulo pt-BR e termo de busca; `Genre.fromKey` devolve `null` para chave desconhecida.
@@ -71,8 +71,6 @@ Sem modelo novo além do enum `Genre`. Grava `UserPreferences(name, genres: [cha
 ## Fora de escopo desta spec
 Editar nome e gêneros depois (perfil), conteúdo do Início (Etapa 08), animações além do básico do Material.
 
-## Pendências para aprovar
-1. **Quando o formulário está incompleto:**
-   (a) **proposta:** botão "Começar" desabilitado até ter nome e ao menos um gênero, com o contador e o texto de ajuda guiando.
-   (b) botão sempre habilitado; ao tocar, aparecem mensagens de erro ("Informe seu nome", "Escolha pelo menos um gênero").
-2. **Lista de gêneros:** os 10 do protótipo, com os rótulos da tabela acima. Quer trocar, tirar ou incluir algum?
+## Decisões do arquiteto
+1. Botão "Começar" desabilitado até haver nome e pelo menos um gênero.
+2. Lista de gêneros aprovada como está na tabela.
