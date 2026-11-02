@@ -1,7 +1,7 @@
 # Spec — Persistência local (Etapa 03)
 
 - **ID:** Etapa 03 do [Plano de Execução](../PLANO.md) (base de F1 e F2 do `docs/PRD.md`)
-- **Status:** aprovada
+- **Status:** implementada
 - **Pastas:** `lib/core/storage/`, `lib/data/repositories/`, `lib/app/app_dependencies.dart`
 
 ## Objetivo
@@ -45,16 +45,16 @@ PreferencesRepository (data/repositories/preferences_repository.dart)
 ```
 
 ## Critérios de aceite (viram testes)
-- [ ] Dado um livro adicionado, quando o app é reaberto (novo repositório sobre os mesmos dados), então o livro continua na biblioteca com o mesmo status e data.
-- [ ] Dado um livro já na biblioteca, quando o adiciono de novo, então é lançado `StateError` e a biblioteca continua com um único registro dele.
-- [ ] Dado um livro na biblioteca, quando atualizo o status para `Lendo`, então a mudança persiste após reabrir.
-- [ ] Dado um livro na biblioteca, quando o removo, então ele some da listagem e não volta após reabrir.
-- [ ] Dado um id que não está na biblioteca, quando atualizo o status, então é lançado `StateError`.
-- [ ] Dados três livros adicionados em momentos diferentes, quando listo, então vêm do mais recente para o mais antigo.
-- [ ] Dadas preferências salvas, quando o app é reaberto, então `load()` devolve o mesmo nome e gêneros; sem preferências salvas, devolve `null`.
-- [ ] Dada uma biblioteca salva com um item corrompido, quando listo, então o item ruim é ignorado e os demais aparecem.
-- [ ] Dadas preferências salvas corrompidas, quando chamo `load()`, então recebo `null`.
-- [ ] Nenhum dos testes usa rede (o armazenamento funciona offline por construção).
+- [x] Dado um livro adicionado, quando o app é reaberto (novo repositório sobre os mesmos dados), então o livro continua na biblioteca com o mesmo status e data.
+- [x] Dado um livro já na biblioteca, quando o adiciono de novo, então é lançado `StateError` e a biblioteca continua com um único registro dele.
+- [x] Dado um livro na biblioteca, quando atualizo o status para `Lendo`, então a mudança persiste após reabrir.
+- [x] Dado um livro na biblioteca, quando o removo, então ele some da listagem e não volta após reabrir.
+- [x] Dado um id que não está na biblioteca, quando atualizo o status, então é lançado `StateError`.
+- [x] Dados três livros adicionados em momentos diferentes, quando listo, então vêm do mais recente para o mais antigo.
+- [x] Dadas preferências salvas, quando o app é reaberto, então `load()` devolve o mesmo nome e gêneros; sem preferências salvas, devolve `null`.
+- [x] Dada uma biblioteca salva com um item corrompido, quando listo, então o item ruim é ignorado e os demais aparecem.
+- [x] Dadas preferências salvas corrompidas, quando chamo `load()`, então recebo `null`.
+- [x] Nenhum dos testes usa rede (o armazenamento funciona offline por construção).
 
 ## Fora de escopo desta spec
 Telas de biblioteca e onboarding (Etapas 05 e 06), Stores MobX, API do Google Books.
