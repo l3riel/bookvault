@@ -1,7 +1,7 @@
 # Spec — Biblioteca pessoal (Etapa 06)
 
 - **ID:** F2 do `docs/PRD.md` · Etapa 06 do [Plano de Execução](../PLANO.md)
-- **Status:** aprovada
+- **Status:** implementada
 - **Pastas:** `lib/features/library/`, `lib/stores/library_store.dart`, `lib/app/widgets/`, `lib/app/app_dependencies.dart`
 - **Referência visual:** [`design/library.png`](../../design/library.png)
 
@@ -41,13 +41,13 @@ Fiel ao protótipo, com textos em pt-BR:
 Sem modelo novo. Usa `UserBook`, `ReadingStatus` e o `LibraryRepository`.
 
 ## Critérios de aceite (viram testes)
-- [ ] Dada uma biblioteca com livros salvos, quando abro a aba Biblioteca (mesmo sem internet), então vejo os livros com título, autor e selo de status.
-- [ ] Dada uma biblioteca vazia, então vejo o estado vazio e o botão "Explorar livros" leva à aba Explorar.
-- [ ] Dados livros em status diferentes, quando escolho o filtro "Lendo", então os livros em leitura ficam em destaque e os demais apagados, e os chips mostram as contagens certas.
-- [ ] Dado um livro "Quero ler", quando mudo o status para "Concluído" pela folha inferior, então o selo muda na hora e a mudança persiste ao reabrir.
-- [ ] Dado um livro na biblioteca, quando o removo e confirmo, então ele some na hora e não volta ao reabrir.
-- [ ] Dado um livro na biblioteca, quando toco nele, então abrem os Detalhes desse livro.
-- [ ] Dado um livro sem capa, então aparece o marcador com o título.
+- [x] Dada uma biblioteca com livros salvos, quando abro a aba Biblioteca (mesmo sem internet), então vejo os livros com título, autor e selo de status.
+- [x] Dada uma biblioteca vazia, então vejo o estado vazio e o botão "Explorar livros" leva à aba Explorar.
+- [x] Dados livros em status diferentes, quando escolho o filtro "Lendo", então os livros em leitura ficam em destaque e os demais apagados, e os chips mostram as contagens certas.
+- [x] Dado um livro "Quero ler", quando mudo o status para "Concluído" pela folha inferior, então o selo muda na hora e a mudança persiste ao reabrir.
+- [x] Dado um livro na biblioteca, quando o removo e confirmo, então ele some na hora e não volta ao reabrir.
+- [x] Dado um livro na biblioteca, quando toco nele, então abrem os Detalhes desse livro.
+- [x] Dado um livro sem capa, então aparece o marcador com o título.
 
 ## Fora de escopo desta spec
 Adicionar livros (vem pelos Detalhes, Etapa 07), busca dentro da biblioteca, ordenação diferente, cache de capas.
