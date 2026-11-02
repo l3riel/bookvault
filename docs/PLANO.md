@@ -26,7 +26,7 @@ O código segue fielmente a árvore do plano ([ADR 0007](adr/0007-estrutura-por-
 | 05 | Onboarding | Tela conforme design; nome e um ou mais gêneros; validação; persistência; fluxo inicial | Primeiro acesso abre o onboarding; execuções seguintes abrem a Home | [S05](specs/S05-onboarding.md) |
 | 06 | Biblioteca | My Library com livros locais; filtros All / Want to Read / Reading / Completed; alterar status; remover; abrir detalhes; estado vazio | Filtros e status funcionam e persistem; remoção reflete na hora; funciona offline | [S06](specs/S06-biblioteca.md) |
 | 07 | Explore e detalhes | Busca em grid com estados de loading, erro, vazio e sem resultados; detalhes com capa, título, autores, descrição, editora, data e páginas; incluir/remover; status do livro salvo | Busca via Google Books; resultados abrem detalhes; metadados ausentes tratados | [S07](specs/S07-explorar-e-detalhes.md) |
-| 08 | Home | Saudação com o nome; recomendações pelos gêneros escolhidos; estados de loading, erro e vazio | Recomendações consideram os gêneros e abrem detalhes; **sem recomendação por IA** | — |
+| 08 | Home | Saudação com o nome; recomendações pelos gêneros escolhidos; estados de loading, erro e vazio | Recomendações consideram os gêneros e abrem detalhes; **sem recomendação por IA** | [S08](specs/S08-home.md) |
 | 09 | Integração e acabamento | Revisar navegação, integração Stores/Repositories/Services, offline, SafeArea, responsividade, comparação com o Stitch | Tudo integrado, segue o design system, sem erros críticos | — |
 | 10 | Testes e validação | Testes de modelos, repositórios, persistência, biblioteca, busca e onboarding; testes manuais | Format, analyze e test executados; fluxos validados em emulador | — |
 
