@@ -6,12 +6,12 @@ import '../../app/router.dart';
 import '../../app/theme/app_colors.dart';
 import '../../app/theme/app_spacing.dart';
 import '../../app/widgets/brand_app_bar.dart';
+import '../../app/widgets/state_message.dart';
 import '../../models/book.dart';
 import '../../models/genre.dart';
 import '../../stores/explore_store.dart';
 import '../../stores/library_store.dart';
 import 'widgets/explore_intro.dart';
-import 'widgets/explore_message.dart';
 import 'widgets/explore_search_field.dart';
 import 'widgets/search_result_card.dart';
 
@@ -94,7 +94,7 @@ class _ExplorePageState extends State<ExplorePage> {
       case ExploreStatus.loading:
         return const Center(child: CircularProgressIndicator());
       case ExploreStatus.empty:
-        return ExploreMessage(
+        return StateMessage(
           icon: Icons.search_off,
           title: 'Nada encontrado',
           message:
@@ -102,7 +102,7 @@ class _ExplorePageState extends State<ExplorePage> {
               'Tente outro título ou autor.',
         );
       case ExploreStatus.error:
-        return ExploreMessage(
+        return StateMessage(
           icon: Icons.cloud_off_outlined,
           title: 'Algo deu errado',
           message: _store.errorMessage ?? '',

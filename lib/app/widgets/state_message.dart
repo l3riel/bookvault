@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../app/theme/app_colors.dart';
-import '../../../app/theme/app_spacing.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_spacing.dart';
 
-/// Aviso centralizado do Explorar (sem resultados ou erro).
-class ExploreMessage extends StatelessWidget {
-  const ExploreMessage({
+/// Aviso centralizado de estado da tela (sem resultados, erro).
+class StateMessage extends StatelessWidget {
+  const StateMessage({
     required this.icon,
     required this.title,
     required this.message,
