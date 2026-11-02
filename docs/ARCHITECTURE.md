@@ -7,6 +7,9 @@
 - Livros: **Google Books API** via **Dio** ([ADR 0004](adr/0004-google-books-dio.md)).
 - Navegação: **GoRouter** ([ADR 0005](adr/0005-go-router-navegacao.md)).
 - Fontes: Newsreader e DM Sans empacotadas ([ADR 0006](adr/0006-fontes-empacotadas.md)).
+- Idioma: textos do Material em pt-BR com `flutter_localizations` do SDK ([ADR 0008](adr/0008-localizacao-pt-br.md)).
+- Rede: chave da Google Books via `--dart-define-from-file=config/api_keys.json` (fora do git) e novas tentativas automáticas para erros 5xx (`RetryInterceptor`).
+- Layout: mobile-first; acima de 600 px o app vira uma coluna central (web/tablet).
 - Injeção de dependências manual, montada no `main.dart`.
 - Qualidade: `flutter analyze` (regras estritas em `analysis_options.yaml`) e `flutter test`, rodados no CI a cada push.
 
