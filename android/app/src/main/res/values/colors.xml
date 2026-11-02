@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fundo do app (AppColors.surfaceBase), usado na abertura nativa. -->
+    <color name="surface_base">#FF121214</color>
+    <!-- Fundo do ícone (AppColors.surfaceElevated), como o logo da barra. -->
+    <color name="icon_background">#FF26262C</color>
+</resources>
