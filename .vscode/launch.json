@@ -5,14 +5,20 @@
       "name": "BookVault (emulador/dispositivo)",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main.dart"
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define-from-file=config/api_keys.json"
+      ]
     },
     {
       "name": "BookVault (Chrome)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
-      "deviceId": "chrome"
+      "deviceId": "chrome",
+      "args": [
+        "--dart-define-from-file=config/api_keys.json"
+      ]
     }
   ]
 }

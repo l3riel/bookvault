@@ -41,5 +41,6 @@ Os três precisam passar. Depois marque a spec como `implementada`.
 - Nunca commitar código que não passa na definição de pronto.
 
 ## Comandos úteis
-- Rodar no emulador: `flutter emulators --launch Pixel_8_API_36` e depois `flutter run`
-- Rodar na web: `flutter run -d chrome`
+- Rodar no emulador: `flutter emulators --launch Pixel_8_API_36` e depois `flutter run --dart-define-from-file=config/api_keys.json`
+- Rodar na web: `flutter run -d chrome --dart-define-from-file=config/api_keys.json`
+- A chave da Google Books fica em `config/api_keys.json` (fora do git). Nunca a escreva no código, em commits, em logs ou no vault.

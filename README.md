@@ -12,15 +12,20 @@ Projeto da **Semana da Computação**, desenvolvido de forma **IA-driven**: o ar
 Decisões técnicas ficam registradas em [`docs/adr/`](docs/adr/).
 
 ## Rodando
-Pré-requisitos: Flutter stable e um emulador Android (ou Chrome).
+Pré-requisitos: Flutter stable, um emulador Android (ou Chrome) e uma chave da Google Books API.
+
+1. Copie `config/api_keys.example.json` para `config/api_keys.json` e cole a sua chave. A pasta `config/` fica fora do git: **nunca versione a chave**.
+2. Rode passando o arquivo (o `launch.json` do VS Code já faz isso):
 
 ```bash
 flutter pub get
 flutter emulators --launch Pixel_8_API_36
-flutter run
+flutter run --dart-define-from-file=config/api_keys.json
 ```
 
-Na web: `flutter run -d chrome`.
+Na web: `flutter run -d chrome --dart-define-from-file=config/api_keys.json`.
+
+Sem a chave o app roda, mas a Google Books usa a cota anônima, que costuma estar esgotada (HTTP 429).
 
 ## Definição de pronto
 ```bash
