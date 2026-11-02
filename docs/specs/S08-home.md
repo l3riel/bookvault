@@ -1,7 +1,7 @@
 # Spec — Início com recomendações (Etapa 08)
 
 - **ID:** F5 do `docs/PRD.md` · Etapa 08 do [Plano de Execução](../PLANO.md)
-- **Status:** aprovada
+- **Status:** implementada
 - **Pastas:** `lib/features/home/`, `lib/stores/home_store.dart`, `lib/app/router.dart`
 - **Referência visual:** [`design/home.png`](../../design/home.png)
 
@@ -43,17 +43,17 @@ Fiel ao protótipo, com textos em pt-BR:
 Sem modelo novo. Usa `UserPreferences`, `Genre`, `Book`, `BooksRepository` e a `LibraryStore` (só leitura, para o selo). Pode precisar de um método `BooksRepository.searchBySubject(subject)` que monta `subject:<termo>`.
 
 ## Critérios de aceite (viram testes)
-- [ ] Dado o usuário "Gabriel" às 20h, então vejo "Boa noite, Gabriel" (e "Bom dia"/"Boa tarde" nos outros horários).
-- [ ] Dados os gêneros Fantasia e Filosofia, então a Home busca por `subject:fantasy` e `subject:philosophy` e mostra o destaque e uma fileira por gênero.
-- [ ] Dados 5 gêneros escolhidos, então só os 3 primeiros são consultados.
-- [ ] Dado um livro que aparece em dois gêneros, então ele aparece só uma vez.
-- [ ] Dada falha de rede em todas as buscas, então vejo o erro em pt-BR e "Tentar de novo" recarrega.
-- [ ] Dada falha em só um gênero, então os outros gêneros aparecem normalmente.
-- [ ] Dado um livro recomendado, quando toco nele, então abrem os Detalhes sem nova requisição.
-- [ ] Dado que troco de aba e volto, então a Home não refaz as buscas.
-- [ ] Dado "Ver todos" de um gênero, então a aba Explorar abre buscando esse gênero.
-- [ ] Dado o 🔖 do destaque, então o livro entra na biblioteca como "Quero ler" e o ícone fica marcado.
-- [ ] Dada uma resposta 503 seguida de 200, então a busca dá certo sem mostrar erro.
+- [x] Dado o usuário "Gabriel" às 20h, então vejo "Boa noite, Gabriel" (e "Bom dia"/"Boa tarde" nos outros horários).
+- [x] Dados os gêneros Fantasia e Filosofia, então a Home busca por `subject:fantasy` e `subject:philosophy` e mostra o destaque e uma fileira por gênero.
+- [x] Dados 5 gêneros escolhidos, então só os 3 primeiros são consultados.
+- [x] Dado um livro que aparece em dois gêneros, então ele aparece só uma vez.
+- [x] Dada falha de rede em todas as buscas, então vejo o erro em pt-BR e "Tentar de novo" recarrega.
+- [x] Dada falha em só um gênero, então os outros gêneros aparecem normalmente.
+- [x] Dado um livro recomendado, quando toco nele, então abrem os Detalhes sem nova requisição.
+- [x] Dado que troco de aba e volto, então a Home não refaz as buscas.
+- [x] Dado "Ver todos" de um gênero, então a aba Explorar abre buscando esse gênero.
+- [x] Dado o 🔖 do destaque, então o livro entra na biblioteca como "Quero ler" e o ícone fica marcado.
+- [x] Dada uma resposta 503 seguida de 200, então a busca dá certo sem mostrar erro.
 
 ## Fora de escopo desta spec
 Recomendação por IA (proibida pelo plano), histórico ou "porque você leu X", paginação das fileiras, cache das recomendações entre sessões.
@@ -63,3 +63,9 @@ Recomendação por IA (proibida pelo plano), histórico ou "porque você leu X",
 2. "Ver todos" leva ao Explorar já buscando o gênero.
 3. O 🔖 do destaque salva direto como "Quero ler".
 4. Erros 5xx temporários da Google Books ganham até 2 novas tentativas automáticas (503 intermitente visto no emulador em 02/11/2026).
+
+## Notas da implementação
+- `RetryInterceptor` em `lib/core/network/` (decisão 4); nos testes a pausa é zero (`fakeDio`).
+- `StateMessage` ganhou `actionIcon` e `scrollable: false` para uso dentro de listas que já rolam.
+- O `PlaceholderView` saiu: todas as abas têm conteúdo real.
+- Conferido no emulador com a chave: saudação, destaque, fileiras de Ficção científica e Filosofia e "Ver todos" abrindo o Explorar com 20 resultados.
