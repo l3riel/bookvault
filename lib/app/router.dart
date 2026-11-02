@@ -47,7 +47,10 @@ GoRouter createAppRouter(AppDependencies dependencies) {
         branches: [
           _branch(AppRoutes.home, (context, state) => const HomePage()),
           _branch(AppRoutes.explore, (context, state) => const ExplorePage()),
-          _branch(AppRoutes.library, (context, state) => const LibraryPage()),
+          _branch(
+            AppRoutes.library,
+            (context, state) => LibraryPage(store: dependencies.libraryStore),
+          ),
         ],
       ),
       GoRoute(
