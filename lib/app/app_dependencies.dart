@@ -7,6 +7,7 @@ import '../data/repositories/books_repository.dart';
 import '../data/repositories/library_repository.dart';
 import '../data/repositories/preferences_repository.dart';
 import '../services/books_api_service.dart';
+import '../stores/library_store.dart';
 
 /// Objetos compartilhados do app, criados uma vez no `main` e repassados pelo
 /// construtor (injeção manual, sem service locator).
@@ -17,6 +18,7 @@ class AppDependencies {
     preferencesRepository = PreferencesRepository(storage: localStorage);
     booksApiService = BooksApiService(dio);
     booksRepository = BooksRepository(api: booksApiService);
+    libraryStore = LibraryStore(libraryRepository)..load();
   }
 
   final Dio dio;
@@ -25,6 +27,9 @@ class AppDependencies {
   late final PreferencesRepository preferencesRepository;
   late final BooksApiService booksApiService;
   late final BooksRepository booksRepository;
+
+  /// Única no app: Biblioteca e Detalhes compartilham o mesmo estado.
+  late final LibraryStore libraryStore;
 
   static Future<AppDependencies> create() async {
     final preferences = await SharedPreferences.getInstance();
