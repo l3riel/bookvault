@@ -1,7 +1,7 @@
 # Spec — Modelos e estruturas de dados (Etapa 02)
 
 - **ID:** Etapa 02 do [Plano de Execução](../PLANO.md) (base de F1–F5 do `docs/PRD.md`)
-- **Status:** aprovada
+- **Status:** implementada
 - **Pastas:** `lib/models/`, `test/models/`
 
 ## Objetivo
@@ -54,15 +54,15 @@ UserPreferences
 ```
 
 ## Critérios de aceite (viram testes)
-- [ ] Dado um `Book` completo, quando faço `toJson` e depois `fromJson`, então obtenho um `Book` igual ao original.
-- [ ] Dado um JSON de `Book` só com `id` e `title`, quando faço `fromJson`, então os opcionais são `null` e as listas vêm vazias.
-- [ ] Dado um JSON de `Book` sem `id` ou sem `title`, quando faço `fromJson`, então é lançado `FormatException`.
-- [ ] Dado um JSON de `UserBook` com status desconhecido, quando faço `fromJson`, então é lançado `FormatException`.
-- [ ] Dado cada `ReadingStatus`, quando converto para JSON e de volta, então obtenho o mesmo valor; e cada um tem o rótulo pt-BR da tabela.
-- [ ] Dado um `UserBook`, quando faço `toJson`/`fromJson`, então o snapshot do livro, o status e `addedAt` são preservados.
-- [ ] Dado um `UserBook`, quando chamo `copyWith(status: ReadingStatus.reading)`, então só o status muda.
-- [ ] Dado um `UserPreferences`, quando faço `toJson`/`fromJson`, então nome e gêneros são preservados.
-- [ ] Nenhum arquivo de `lib/models/` importa `package:flutter` (teste que lê os imports).
+- [x] Dado um `Book` completo, quando faço `toJson` e depois `fromJson`, então obtenho um `Book` igual ao original.
+- [x] Dado um JSON de `Book` só com `id` e `title`, quando faço `fromJson`, então os opcionais são `null` e as listas vêm vazias.
+- [x] Dado um JSON de `Book` sem `id` ou sem `title`, quando faço `fromJson`, então é lançado `FormatException`.
+- [x] Dado um JSON de `UserBook` com status desconhecido, quando faço `fromJson`, então é lançado `FormatException`.
+- [x] Dado cada `ReadingStatus`, quando converto para JSON e de volta, então obtenho o mesmo valor; e cada um tem o rótulo pt-BR da tabela.
+- [x] Dado um `UserBook`, quando faço `toJson`/`fromJson`, então o snapshot do livro, o status e `addedAt` são preservados.
+- [x] Dado um `UserBook`, quando chamo `copyWith(status: ReadingStatus.reading)`, então só o status muda.
+- [x] Dado um `UserPreferences`, quando faço `toJson`/`fromJson`, então nome e gêneros são preservados.
+- [x] Nenhum arquivo de `lib/models/` importa `package:flutter` (teste que lê os imports).
 
 ## Fora de escopo desta spec
 Persistência (Etapa 03), DTO e conversão da Google Books (Etapa 04), lista de gêneros do onboarding (Etapa 05).
