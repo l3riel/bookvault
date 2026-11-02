@@ -1,7 +1,7 @@
 # Spec — Integração com a Google Books API (Etapa 04)
 
 - **ID:** Etapa 04 do [Plano de Execução](../PLANO.md) (base de F3, F4 e F5 do `docs/PRD.md`)
-- **Status:** aprovada
+- **Status:** implementada
 - **Pastas:** `lib/services/`, `lib/data/dtos/`, `lib/data/repositories/`, `lib/app/app_dependencies.dart`
 
 ## Objetivo
@@ -49,17 +49,17 @@ BooksException implements Exception
 ```
 
 ## Critérios de aceite (viram testes, sem rede real: o Dio usa um adaptador falso)
-- [ ] Dada uma resposta com dois volumes, quando busco "duna", então recebo dois `Book` com id, título, autores e capa convertidos.
-- [ ] Dada uma busca, então a requisição vai para `volumes` com `q=<termo>`, `printType=books`, `langRestrict=pt` e `maxResults=20`.
-- [ ] Dada uma resposta sem `items` (`totalItems: 0`), quando busco, então recebo lista vazia.
-- [ ] Dado um termo vazio ou só com espaços, quando busco, então recebo lista vazia e nenhuma requisição é feita.
-- [ ] Dado um volume sem descrição, editora, páginas e capa, quando converto, então esses campos ficam `null` e nada quebra.
-- [ ] Dado um volume sem título na busca, então ele é descartado e os demais aparecem.
-- [ ] Dada uma capa com `http://`, quando converto, então ela vira `https://`; sem `thumbnail`, usa `smallThumbnail`.
-- [ ] Dada uma descrição com `<p>` e `<br>`, quando converto, então o texto vem sem tags.
-- [ ] Dado um id existente, quando consulto detalhes, então recebo o `Book` com editora, data e páginas.
-- [ ] Dado um HTTP 404 nos detalhes, então é lançado `BooksException` do tipo `notFound`.
-- [ ] Dada falha de conexão, tempo esgotado ou HTTP 500, então é lançado `BooksException` com o tipo correspondente.
+- [x] Dada uma resposta com dois volumes, quando busco "duna", então recebo dois `Book` com id, título, autores e capa convertidos.
+- [x] Dada uma busca, então a requisição vai para `volumes` com `q=<termo>`, `printType=books`, `langRestrict=pt` e `maxResults=20`.
+- [x] Dada uma resposta sem `items` (`totalItems: 0`), quando busco, então recebo lista vazia.
+- [x] Dado um termo vazio ou só com espaços, quando busco, então recebo lista vazia e nenhuma requisição é feita.
+- [x] Dado um volume sem descrição, editora, páginas e capa, quando converto, então esses campos ficam `null` e nada quebra.
+- [x] Dado um volume sem título na busca, então ele é descartado e os demais aparecem.
+- [x] Dada uma capa com `http://`, quando converto, então ela vira `https://`; sem `thumbnail`, usa `smallThumbnail`.
+- [x] Dada uma descrição com `<p>` e `<br>`, quando converto, então o texto vem sem tags.
+- [x] Dado um id existente, quando consulto detalhes, então recebo o `Book` com editora, data e páginas.
+- [x] Dado um HTTP 404 nos detalhes, então é lançado `BooksException` do tipo `notFound`.
+- [x] Dada falha de conexão, tempo esgotado ou HTTP 500, então é lançado `BooksException` com o tipo correspondente.
 
 ## Fora de escopo desta spec
 Telas de Explorar, Detalhes e Início (Etapas 07 e 08), recomendação por gênero (Etapa 08), paginação/rolagem infinita, cache das buscas.
@@ -67,3 +67,6 @@ Telas de Explorar, Detalhes e Início (Etapas 07 e 08), recomendação por gêne
 ## Decisões do arquiteto
 1. Resultados só em português (`langRestrict=pt`).
 2. 20 resultados por busca, sem paginação no MVP.
+
+## Observação da implementação (02/11/2026)
+Na checagem manual contra a API real, a Google respondeu **HTTP 429 "Quota exceeded … Queries per day"**: sem chave, a cota anônima é compartilhada e pode estar esgotada. O app trata isso como erro `server`. Para a demonstração é preciso uma chave de API, como previsto na ADR 0004 (via `--dart-define`, nunca no código); isso fica para uma decisão do arquiteto.
