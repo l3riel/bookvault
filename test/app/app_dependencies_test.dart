@@ -21,6 +21,7 @@ void main() {
 
     expect(dependencies.preferencesRepository.load()?.name, 'Gabriel');
     expect(dependencies.libraryRepository.getAll(), isEmpty);
+    expect(dependencies.booksRepository, isNotNull);
     expect(dependencies.dio.options.baseUrl, googleBooksBaseUrl);
     expect(
       dependencies.dio.options.connectTimeout,

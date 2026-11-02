@@ -3,8 +3,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/network/dio_client.dart';
 import '../core/storage/local_storage.dart';
+import '../data/repositories/books_repository.dart';
 import '../data/repositories/library_repository.dart';
 import '../data/repositories/preferences_repository.dart';
+import '../services/books_api_service.dart';
 
 /// Objetos compartilhados do app, criados uma vez no `main` e repassados pelo
 /// construtor (injeção manual, sem service locator).
@@ -13,12 +15,16 @@ class AppDependencies {
     : localStorage = LocalStorage(preferences) {
     libraryRepository = LibraryRepository(storage: localStorage);
     preferencesRepository = PreferencesRepository(storage: localStorage);
+    booksApiService = BooksApiService(dio);
+    booksRepository = BooksRepository(api: booksApiService);
   }
 
   final Dio dio;
   final LocalStorage localStorage;
   late final LibraryRepository libraryRepository;
   late final PreferencesRepository preferencesRepository;
+  late final BooksApiService booksApiService;
+  late final BooksRepository booksRepository;
 
   static Future<AppDependencies> create() async {
     final preferences = await SharedPreferences.getInstance();
