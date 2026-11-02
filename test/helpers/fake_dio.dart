@@ -28,9 +28,10 @@ class FakeHttpAdapter implements HttpClientAdapter {
   void close({bool force = false}) {}
 }
 
-/// Dio igual ao do app, mas respondendo pelo [adapter].
+/// Dio igual ao do app (com as novas tentativas, sem pausa), mas respondendo
+/// pelo [adapter].
 Dio fakeDio(FakeHttpAdapter adapter) =>
-    createDioClient()..httpClientAdapter = adapter;
+    createDioClient(retryDelay: Duration.zero)..httpClientAdapter = adapter;
 
 ResponseBody jsonBody(Object body, {int status = 200}) {
   return ResponseBody.fromString(

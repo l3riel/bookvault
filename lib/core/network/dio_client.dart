@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+import 'retry_interceptor.dart';
+
 /// URL base da Google Books API (ADR 0004).
 const String googleBooksBaseUrl = 'https://www.googleapis.com/books/v1/';
 
@@ -11,8 +13,12 @@ const String booksApiKey = String.fromEnvironment('BOOKS_API_KEY');
 /// Cria o cliente HTTP usado pelos serviços de livros.
 ///
 /// Com [apiKey] vazia, as chamadas saem sem chave (cota anônima, bem menor).
-Dio createDioClient({String apiKey = booksApiKey}) {
-  return Dio(
+/// Erros 5xx temporários são repetidos com pausa de [retryDelay] crescente.
+Dio createDioClient({
+  String apiKey = booksApiKey,
+  Duration retryDelay = const Duration(milliseconds: 600),
+}) {
+  final dio = Dio(
     BaseOptions(
       baseUrl: googleBooksBaseUrl,
       connectTimeout: const Duration(seconds: 10),
@@ -21,4 +27,6 @@ Dio createDioClient({String apiKey = booksApiKey}) {
       queryParameters: {if (apiKey.isNotEmpty) 'key': apiKey},
     ),
   );
+  return dio
+    ..interceptors.add(RetryInterceptor(dio: dio, baseDelay: retryDelay));
 }
