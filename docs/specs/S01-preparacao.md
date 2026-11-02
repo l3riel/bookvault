@@ -1,7 +1,7 @@
 # Spec — Preparação do projeto (Etapa 01)
 
 - **ID:** F0 (ver tabela do `docs/PRD.md`)
-- **Status:** aprovada
+- **Status:** implementada
 - **Feature folder:** `lib/app/`, `lib/core/`, esqueleto de `lib/features/`
 
 ## Objetivo
@@ -28,11 +28,11 @@ Deixar o app pronto para receber as features: dependências instaladas, tema Noc
 Nenhum modelo nesta etapa.
 
 ## Critérios de aceite (viram testes)
-- [ ] Dado o app iniciado, quando a primeira tela aparece, então ela é a Home e a barra mostra as abas Início, Explorar e Biblioteca.
-- [ ] Dado o app na Home, quando toco em Explorar e depois em Biblioteca, então a tela correspondente aparece e a aba fica ativa.
-- [ ] Dado um usuário sem onboarding, quando o app inicia, então o redirect leva a `/onboarding`.
-- [ ] Dado o tema do app, então `scaffoldBackgroundColor` é `#121214` e a cor primária é `#D4AF37`.
-- [ ] `dart format .`, `flutter analyze` e `flutter test` passam; o app roda no emulador e no Chrome.
+- [x] Dado o app iniciado, quando a primeira tela aparece, então ela é a Home e a barra mostra as abas Início, Explorar e Biblioteca.
+- [x] Dado o app na Home, quando toco em Explorar e depois em Biblioteca, então a tela correspondente aparece e a aba fica ativa.
+- [x] Dado um usuário sem onboarding, quando o app inicia, então o redirect leva a `/onboarding`.
+- [x] Dado o tema do app, então `scaffoldBackgroundColor` é `#121214` e a cor primária é `#D4AF37`.
+- [x] `dart format .`, `flutter analyze` e `flutter test` passam; o app roda no emulador e no Chrome.
 
 ## Fora de escopo desta spec
 Modelos, persistência, API, conteúdo real das telas.
