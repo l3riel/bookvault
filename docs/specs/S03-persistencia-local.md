@@ -1,7 +1,7 @@
 # Spec — Persistência local (Etapa 03)
 
 - **ID:** Etapa 03 do [Plano de Execução](../PLANO.md) (base de F1 e F2 do `docs/PRD.md`)
-- **Status:** rascunho
+- **Status:** aprovada
 - **Pastas:** `lib/core/storage/`, `lib/data/repositories/`, `lib/app/app_dependencies.dart`
 
 ## Objetivo
@@ -39,25 +39,27 @@ LibraryRepository
   Future<UserBook> updateStatus(String bookId, ReadingStatus status)
   Future<void> remove(String bookId)
 
-PreferencesRepository (ver pendência 1)
+PreferencesRepository (data/repositories/preferences_repository.dart)
   UserPreferences? load()
   Future<void> save(UserPreferences preferences)
 ```
 
 ## Critérios de aceite (viram testes)
 - [ ] Dado um livro adicionado, quando o app é reaberto (novo repositório sobre os mesmos dados), então o livro continua na biblioteca com o mesmo status e data.
-- [ ] Dado um livro já na biblioteca, quando o adiciono de novo, então a biblioteca continua com um único registro dele.
+- [ ] Dado um livro já na biblioteca, quando o adiciono de novo, então é lançado `StateError` e a biblioteca continua com um único registro dele.
 - [ ] Dado um livro na biblioteca, quando atualizo o status para `Lendo`, então a mudança persiste após reabrir.
 - [ ] Dado um livro na biblioteca, quando o removo, então ele some da listagem e não volta após reabrir.
 - [ ] Dado um id que não está na biblioteca, quando atualizo o status, então é lançado `StateError`.
 - [ ] Dados três livros adicionados em momentos diferentes, quando listo, então vêm do mais recente para o mais antigo.
 - [ ] Dadas preferências salvas, quando o app é reaberto, então `load()` devolve o mesmo nome e gêneros; sem preferências salvas, devolve `null`.
+- [ ] Dada uma biblioteca salva com um item corrompido, quando listo, então o item ruim é ignorado e os demais aparecem.
+- [ ] Dadas preferências salvas corrompidas, quando chamo `load()`, então recebo `null`.
 - [ ] Nenhum dos testes usa rede (o armazenamento funciona offline por construção).
 
 ## Fora de escopo desta spec
 Telas de biblioteca e onboarding (Etapas 05 e 06), Stores MobX, API do Google Books.
 
-## Pendências para aprovar
-1. **Onde ficam as preferências?** O plano lista só `books_repository` e `library_repository`. Proposta: um `preferences_repository.dart` pequeno em `data/repositories/`, porque preferências não são biblioteca. Alternativa: métodos dentro do `LibraryRepository`, fiel à lista do plano.
-2. **Adicionar um livro que já existe:** proposta: devolver o registro existente sem mudar nada (status e data preservados). Alternativa: lançar erro.
-3. **Dado salvo corrompido** (ex.: um item com status desconhecido): proposta: ignorar só o item ruim e carregar o resto, para o usuário não perder a biblioteca inteira. Alternativa: lançar erro e não carregar nada, coerente com a decisão da S02.
+## Decisões do arquiteto
+1. Preferências em um `PreferencesRepository` separado, em `data/repositories/preferences_repository.dart`.
+2. Adicionar um livro que já está na biblioteca lança `StateError`.
+3. Item salvo corrompido é ignorado; os demais carregam normalmente (o item ruim some na próxima gravação).
