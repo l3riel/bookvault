@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'theme/app_theme.dart';
 import 'app_dependencies.dart';
+import 'theme/app_colors.dart';
+import 'theme/app_theme.dart';
+
+/// Largura máxima do conteúdo: o app é mobile-first; em telas largas (web,
+/// tablet) ele vira uma coluna central (S09).
+const double maxContentWidth = 600;
 
 /// Widget raiz: aplica o tema e as rotas.
 class BookVaultApp extends StatelessWidget {
@@ -22,6 +27,15 @@ class BookVaultApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.dark,
       routerConfig: router,
+      builder: (context, child) => ColoredBox(
+        color: AppColors.surfaceBase,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: maxContentWidth),
+            child: child,
+          ),
+        ),
+      ),
     );
   }
 }

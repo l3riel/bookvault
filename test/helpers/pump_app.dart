@@ -32,7 +32,7 @@ class TestApp {
   final FakeHttpAdapter api;
 }
 
-/// Monta o app inteiro em tela de celular (360×800), sem rede.
+/// Monta o app inteiro, por padrão em tela de celular (360×800), sem rede.
 ///
 /// Com [preferences] nulo, simula o primeiro acesso. [library] já vem salva.
 /// [api] responde às chamadas da Google Books; sem ele, toda chamada falha
@@ -44,9 +44,10 @@ Future<TestApp> pumpBookVault(
   List<UserBook> library = const [],
   FakeHandler? api,
   bool keepStartupRequests = false,
+  Size logicalSize = const Size(360, 800),
 }) async {
   tester.view
-    ..physicalSize = const Size(1080, 2400)
+    ..physicalSize = logicalSize * 3
     ..devicePixelRatio = 3;
   addTearDown(tester.view.reset);
 

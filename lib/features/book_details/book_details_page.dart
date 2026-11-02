@@ -35,24 +35,29 @@ class _BookDetailsPageState extends State<BookDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Detalhes')),
-      body: Observer(
-        builder: (context) {
-          final book = _store.book;
-          switch (_store.status) {
-            case BookDetailsStatus.loading:
-              return const Center(child: CircularProgressIndicator());
-            case BookDetailsStatus.error:
-              return StateMessage(
-                icon: Icons.cloud_off_outlined,
-                title: 'Não foi possível abrir o livro',
-                message: _store.errorMessage ?? '',
-                actionLabel: 'Tentar de novo',
-                onAction: _store.load,
-              );
-            case BookDetailsStatus.loaded:
-              return _content(book!);
-          }
-        },
+      // Sem barra de navegação embaixo: protege o fim da rolagem da barra
+      // de gestos do sistema (S09).
+      body: SafeArea(
+        top: false,
+        child: Observer(
+          builder: (context) {
+            final book = _store.book;
+            switch (_store.status) {
+              case BookDetailsStatus.loading:
+                return const Center(child: CircularProgressIndicator());
+              case BookDetailsStatus.error:
+                return StateMessage(
+                  icon: Icons.cloud_off_outlined,
+                  title: 'Não foi possível abrir o livro',
+                  message: _store.errorMessage ?? '',
+                  actionLabel: 'Tentar de novo',
+                  onAction: _store.load,
+                );
+              case BookDetailsStatus.loaded:
+                return _content(book!);
+            }
+          },
+        ),
       ),
     );
   }
