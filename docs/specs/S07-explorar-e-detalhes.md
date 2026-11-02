@@ -1,7 +1,7 @@
 # Spec — Explorar e detalhes do livro (Etapa 07)
 
 - **ID:** F3 e F4 do `docs/PRD.md` · Etapa 07 do [Plano de Execução](../PLANO.md)
-- **Status:** aprovada
+- **Status:** implementada
 - **Pastas:** `lib/features/explore/`, `lib/features/book_details/`, `lib/stores/explore_store.dart`, `lib/stores/book_details_store.dart`, `lib/app/router.dart`, `lib/app/app_dependencies.dart`
 - **Referência visual:** [`design/explore.png`](../../design/explore.png), [`design/book_details.png`](../../design/book_details.png)
 
@@ -48,14 +48,14 @@ Fiel aos protótipos, com textos em pt-BR:
 Sem modelo novo. Usa `Book`, `UserBook`, `ReadingStatus`, `BooksRepository` e a `LibraryStore`. Precisa de uma ação `add(book, status)` na `LibraryStore` (o repositório já tem `add`).
 
 ## Critérios de aceite (viram testes)
-- [ ] Dado que digito "duna" e busco, então vejo a grade com título, autor e capa (ou marcador) e a contagem de resultados.
-- [ ] Dada uma busca sem resultados, então vejo "Nada encontrado" com o termo buscado.
-- [ ] Dada uma falha de rede, então vejo a mensagem de erro em pt-BR e "Tentar de novo" repete a busca.
-- [ ] Dado um resultado, quando toco nele, então abrem os Detalhes desse livro sem nova requisição.
-- [ ] Dados os Detalhes de um livro sem editora, páginas ou sinopse, então a tela não quebra e omite ou substitui esses campos.
-- [ ] Dado um livro fora da biblioteca, quando o adiciono, então ele aparece na aba Biblioteca e persiste ao reabrir.
-- [ ] Dado um livro salvo, então os Detalhes mostram o status atual; quando mudo o status ou removo (confirmando), a Biblioteca reflete na hora.
-- [ ] Dado um livro salvo e sem internet, quando abro os Detalhes pela Biblioteca, então vejo os dados salvos.
+- [x] Dado que digito "duna" e busco, então vejo a grade com título, autor e capa (ou marcador) e a contagem de resultados.
+- [x] Dada uma busca sem resultados, então vejo "Nada encontrado" com o termo buscado.
+- [x] Dada uma falha de rede, então vejo a mensagem de erro em pt-BR e "Tentar de novo" repete a busca.
+- [x] Dado um resultado, quando toco nele, então abrem os Detalhes desse livro sem nova requisição.
+- [x] Dados os Detalhes de um livro sem editora, páginas ou sinopse, então a tela não quebra e omite ou substitui esses campos.
+- [x] Dado um livro fora da biblioteca, quando o adiciono, então ele aparece na aba Biblioteca e persiste ao reabrir.
+- [x] Dado um livro salvo, então os Detalhes mostram o status atual; quando mudo o status ou removo (confirmando), a Biblioteca reflete na hora.
+- [x] Dado um livro salvo e sem internet, quando abro os Detalhes pela Biblioteca, então vejo os dados salvos.
 
 ## Fora de escopo desta spec
 Paginação ("carregar mais"), filtros na busca, histórico de buscas, recomendações (Etapa 08), chave da API (entra quando o `config/api_keys.json` existir).
@@ -64,3 +64,7 @@ Paginação ("carregar mais"), filtros na busca, histórico de buscas, recomenda
 1. A busca roda só ao confirmar pelo teclado (poupa a cota da API).
 2. Antes de buscar, o Explorar mostra a dica e chips com os gêneros do onboarding.
 3. Nos Detalhes, "Adicionar à biblioteca" salva como "Quero ler"; o seletor de status e "Remover" aparecem depois.
+
+## Notas da implementação
+- Componentes compartilhados novos em `lib/app/widgets/`: `StateMessage` (aviso de vazio/erro), `confirmRemoval` (movido da Biblioteca) e `authorsLabel`.
+- Sem a chave da API, a busca real recebe HTTP 429 (cota anônima esgotada) e mostra o erro de servidor; a chave entra via `config/api_keys.json` + `--dart-define-from-file`.
