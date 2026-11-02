@@ -46,3 +46,7 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# Chaves de API locais (nunca versionar). Ver config/api_keys.example.json
+config/*
+!config/api_keys.example.json
