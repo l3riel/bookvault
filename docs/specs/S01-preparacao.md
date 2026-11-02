@@ -2,7 +2,7 @@
 
 - **ID:** F0 (ver tabela do `docs/PRD.md`)
 - **Status:** implementada
-- **Feature folder:** `lib/app/`, `lib/core/`, esqueleto de `lib/features/`
+- **Pastas:** `lib/app/`, `lib/core/`, `lib/features/`
 
 ## Objetivo
 Deixar o app pronto para receber as features: dependências instaladas, tema Nocturne Editorial aplicado, navegação entre as três abas funcionando e dependências injetadas manualmente.

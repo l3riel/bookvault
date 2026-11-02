@@ -11,36 +11,19 @@
 - Qualidade: `flutter analyze` (regras estritas em `analysis_options.yaml`) e `flutter test`, rodados no CI a cada push.
 
 ## Organização
-Feature-first, com três camadas por feature ([ADR 0001](adr/0001-flutter-feature-first.md)). Detalhes e árvore de pastas em [`lib/README.md`](../lib/README.md).
+Por responsabilidade, fiel ao [Plano de Execução](PLANO.md) ([ADR 0007](adr/0007-estrutura-por-responsabilidade.md), que substitui a ADR 0001). Árvore de pastas em [`lib/README.md`](../lib/README.md).
 
-| Camada | Responsabilidade | Pode depender de |
+| Pasta | Responsabilidade | Pode depender de |
 |---|---|---|
-| `domain` | Entidades e regras de negócio, Dart puro | nada |
-| `data` | Persistência, APIs, DTOs, conversão de modelos | `domain` |
-| `presentation` | Telas, widgets, Stores MobX | `domain` (e repositórios recebidos por injeção) |
+| `models/` | Modelos internos, Dart puro | nada |
+| `services/` | Chamadas HTTP à Google Books (Dio) | `core/network`, `data/dtos` |
+| `data/dtos/` | Formato bruto da API | nada |
+| `data/repositories/` | Converte DTO → modelo, persiste e lê dados locais | `services`, `core/storage`, `models` |
+| `stores/` | Estado MobX das telas | `data/repositories`, `models` |
+| `features/<tela>/` | Telas e componentes | `stores`, `models`, `app/theme` |
+| `app/` | Raiz do app, rotas, tema, injeção de dependências | tudo |
 
-Fluxo: `Widget → Store → Repository → (LocalStorage | BooksApiService) → DTO → modelo de domain`.
-
-## Mapeamento do plano
-O [Plano de Execução](PLANO.md) lista pastas globais e permite ajustá-las preservando as responsabilidades. Cada item ficou assim:
-
-| Plano | No projeto |
-|---|---|
-| `app/app.dart`, `app/router.dart` | `lib/app/app.dart`, `lib/core/routing/app_router.dart` |
-| `app/theme/*` | `lib/core/theme/` (`app_colors`, `app_typography`, `app_spacing`, `app_theme`) |
-| `core/network/dio_client.dart` | `lib/core/network/dio_client.dart` |
-| `core/storage/local_storage.dart` | `lib/core/storage/local_storage.dart` |
-| `models/book.dart` | `lib/features/books/domain/book.dart` (compartilhado por Explore, Detalhes e Home) |
-| `models/user_book.dart`, `reading_status.dart` | `lib/features/library/domain/` |
-| `models/user_preferences.dart` | `lib/features/onboarding/domain/` |
-| `data/dtos/google_books_volume_dto.dart` | `lib/features/books/data/dtos/` |
-| `services/books_api_service.dart` | `lib/features/books/data/books_api_service.dart` |
-| `data/repositories/books_repository.dart` | `lib/features/books/data/books_repository.dart` |
-| `data/repositories/library_repository.dart` | `lib/features/library/data/library_repository.dart` |
-| `stores/<x>_store.dart` | `lib/features/<x>/presentation/<x>_store.dart` |
-| `features/<tela>/` | `lib/features/<tela>/presentation/` |
-
-`books` é uma feature só de dados (sem tela própria): reúne o modelo `Book` e o acesso à Google Books API usados por `explore`, `book_details` e `home`.
+Fluxo: `Widget → Store → Repository → (BooksApiService | LocalStorage) → DTO → Model`.
 
 ## Registro de decisões
 Ver [`docs/adr/`](adr/).

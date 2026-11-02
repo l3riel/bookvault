@@ -1,1 +1,1 @@
-Siga as instruções do arquivo `CLAUDE.md` na raiz do repositório: papéis (o arquiteto decide, a IA implementa specs aprovadas de `docs/specs/`), arquitetura feature-first, regras de código e a definição de pronto (`dart format .`, `flutter analyze`, `flutter test`).
+Siga as instruções do arquivo `CLAUDE.md` na raiz do repositório: papéis (o arquiteto decide, a IA implementa specs aprovadas de `docs/specs/`), estrutura de pastas do plano de execução (`lib/README.md`), regras de código e a definição de pronto (`dart format .`, `flutter analyze`, `flutter test`).

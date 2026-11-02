@@ -13,8 +13,8 @@ Projeto da Semana da Computação desenvolvido de forma **IA-driven**.
 
 ## Stack e arquitetura
 - Flutter stable + Dart 3; alvos Android e Web.
-- Feature-first: `lib/features/<feature>/{domain,data,presentation}`. Regras em `lib/README.md`.
-- `domain` é Dart puro (sem `package:flutter`). `presentation` não acessa `data` diretamente.
+- Estrutura do plano de execução (`docs/PLANO.md`, ADR 0007): `app/`, `core/`, `models/`, `data/`, `services/`, `stores/` e `features/<tela>/`. Regras em `lib/README.md`.
+- `models/` é Dart puro (sem `package:flutter` e sem DTO). Telas falam só com Stores; HTTP e persistência ficam em services/repositories.
 - **Não adicione pacotes** do pub.dev sem uma ADR aceita que os justifique.
 
 ## Código
@@ -25,7 +25,7 @@ Projeto da Semana da Computação desenvolvido de forma **IA-driven**.
 
 ## Testes
 - Todo critério de aceite da spec vira teste (`test/` espelhando `lib/`).
-- Regras de `domain` → teste unitário; telas → widget test dos estados principais.
+- Modelos, repositórios e stores → teste unitário; telas → widget test dos estados principais.
 
 ## Definição de pronto (rode antes de cada commit)
 ```bash

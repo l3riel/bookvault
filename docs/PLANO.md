@@ -13,7 +13,7 @@
 - Validar cada incremento antes de iniciar o próximo.
 
 ## 2. Estrutura
-O plano original propõe pastas globais (`models/`, `stores/`, `services/`, `data/`) e permite ajustá-la "desde que sejam preservadas as responsabilidades arquiteturais". O mapeamento para o feature-first da [ADR 0001](adr/0001-flutter-feature-first.md) está em [`ARCHITECTURE.md`](ARCHITECTURE.md#mapeamento-do-plano).
+O código segue fielmente a árvore do plano ([ADR 0007](adr/0007-estrutura-por-responsabilidade.md)); detalhes em [`lib/README.md`](../lib/README.md).
 
 ## 3. Etapas
 

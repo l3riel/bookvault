@@ -1,7 +1,7 @@
 # ADR 0001 — Flutter com arquitetura feature-first
 
 - **Data:** 2026-11-02
-- **Status:** aceita
+- **Status:** substituída por ADR 0007
 
 ## Contexto
 Projeto da Semana da Computação, desenvolvido de forma *IA-driven*: o arquiteto define requisitos e decisões, a IA implementa. Precisa rodar no celular (Android) e ser fácil de demonstrar (web).
