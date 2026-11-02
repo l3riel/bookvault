@@ -21,6 +21,13 @@ class BooksRepository {
     return [for (final volume in volumes) ?volume.toBook()];
   }
 
+  /// Livros de um assunto da Google Books (ex.: `fantasy`), usado nas
+  /// recomendações da Home.
+  Future<List<Book>> searchBySubject(String subject) {
+    final term = subject.trim();
+    return term.isEmpty ? Future.value(const []) : search('subject:$term');
+  }
+
   /// Detalhes de um livro pelo `volumeId`.
   Future<Book> getById(String volumeId) async {
     final volume = await _guard(() => _api.getVolume(volumeId));

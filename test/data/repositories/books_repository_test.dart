@@ -20,6 +20,22 @@ void main() {
     isA<BooksException>().having((error) => error.type, 'type', type),
   );
 
+  group('searchBySubject', () {
+    test('busca pelo prefixo subject:', () async {
+      await repository.searchBySubject('science fiction');
+
+      expect(
+        adapter.requests.single.queryParameters['q'],
+        'subject:science fiction',
+      );
+    });
+
+    test('assunto em branco não chama a API', () async {
+      expect(await repository.searchBySubject('  '), isEmpty);
+      expect(adapter.requests, isEmpty);
+    });
+  });
+
   group('search', () {
     test('converte os volumes encontrados em Book', () async {
       adapter.handler = (_) => jsonBody(
