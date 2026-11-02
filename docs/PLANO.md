@@ -20,7 +20,7 @@ O código segue fielmente a árvore do plano ([ADR 0007](adr/0007-estrutura-por-
 | # | Etapa | Entregas | Critérios de conclusão | Spec |
 |---|---|---|---|---|
 | 01 | Preparação | Dependências, tema e tokens, GoRouter, pastas, inicialização e injeção manual de dependências | App executa sem erros; navegação inicial; tema global aplicado | [S01](specs/S01-preparacao.md) |
-| 02 | Modelos | `Book`, `UserBook`, `UserPreferences`, `ReadingStatus` com JSON | `volumeId` do Google Books identifica o livro; `UserBook` guarda snapshot dos metadados, status e data de inclusão; modelos não dependem de DTO; testes de JSON | — |
+| 02 | Modelos | `Book`, `UserBook`, `UserPreferences`, `ReadingStatus` com JSON | `volumeId` do Google Books identifica o livro; `UserBook` guarda snapshot dos metadados, status e data de inclusão; modelos não dependem de DTO; testes de JSON | [S02](specs/S02-modelos.md) |
 | 03 | Persistência local | `LocalStorage` (SharedPreferences), `LibraryRepository`, preferências; incluir, atualizar, remover e recuperar; unicidade | Preferências e biblioteca persistem entre execuções; dados acessíveis offline | — |
 | 04 | Google Books API | Cliente Dio, `BooksApiService`, `GoogleBooksVolumeDto` → `Book`, `BooksRepository`; busca por título/autor e detalhes; tratamento de erros HTTP, respostas vazias e campos ausentes | Busca retorna livros; metadados convertidos; campos ausentes e erros de conexão tratados | — |
 | 05 | Onboarding | Tela conforme design; nome e um ou mais gêneros; validação; persistência; fluxo inicial | Primeiro acesso abre o onboarding; execuções seguintes abrem a Home | — |
