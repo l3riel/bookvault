@@ -1,0 +1,191 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "accent-brass-hover": "#E5C158", "tertiary-container": "#7cc54d", "surface-container-lowest": "#0e0e12", "surface-variant": "#353439", "primary-container": "#d4af37", "on-background": "#e4e1e7", "error-container": "#93000a", "tertiary-fixed": "#aaf778", "on-secondary-container": "#dc9cff", "primary-fixed-dim": "#e9c349", "surface-container-high": "#2a2a2e", "secondary-container": "#6b1b99", "surface-elevated": "#26262C", "on-error": "#690005", "surface-container-highest": "#353439", "text-parchment": "#F4EFEA", "on-surface-variant": "#d0c5af", "surface-base": "#121214", "surface": "#131317", "secondary": "#e6b4ff", "on-error-container": "#ffdad6", "outline": "#99907c", "on-primary-fixed": "#241a00", "on-secondary-fixed-variant": "#6b1b99", "text-muted": "#9E9EA8", "surface-bright": "#39393d", "inverse-on-surface": "#303034", "surface-raised": "#1C1C20", "tertiary-fixed-dim": "#8fda5f", "surface-tint": "#e9c349", "tertiary": "#96e266", "on-tertiary-container": "#214f00", "on-primary": "#3c2f00", "border-subtle": "#2E2E36", "on-secondary": "#4f0077", "surface-container-low": "#1b1b1f", "outline-variant": "#4d4635", "on-secondary-fixed": "#30004a", "background": "#131317", "primary": "#f2ca50", "surface-dim": "#131317", "on-tertiary": "#153800", "on-tertiary-fixed-variant": "#225100", "on-primary-container": "#554300", "error": "#ffb4ab", "surface-container": "#1f1f23", "on-tertiary-fixed": "#0a2100", "inverse-primary": "#735c00", "primary-fixed": "#ffe088", "secondary-fixed-dim": "#e6b4ff", "inverse-surface": "#e4e1e7", "secondary-fixed": "#f5d9ff", "on-surface": "#e4e1e7", "on-primary-fixed-variant": "#574500" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin-tablet": "1.5rem", "gutter": "1rem", "margin": "1rem", "space-md": "1rem", "space-sm": "0.5rem", "gutter-mobile": "0.75rem", "space-lg": "1.5rem", "space-xl": "2rem", "space-xs": "0.25rem" }, fontFamily: { "label-md": ["DM Sans"], "headline-lg": ["Newsreader"], "body-md": ["DM Sans"], "label-sm": ["DM Sans"], "body-sm": ["DM Sans"], "body-lg": ["Newsreader"], "headline-md": ["Newsreader"], "display-lg": ["Newsreader"], "label-lg": ["DM Sans"], "display-lg-mobile": ["Newsreader"], "headline-sm": ["Newsreader"] }, fontSize: { "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "500" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary-container selection:text-surface-base"><header class="fixed top-0 inset-x-0 z-50 pt-safe bg-surface-base/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(0,0,0,0.5)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="BookVault Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGFmFhPAo4mwT87PdtKqyr71MEsGqM9cxMzMzgpbvS3dF-qKlas19UlC8-D9HfPJOcNtFB0zTmAa83E7clCGbdm_Z2k1KIz3yM7oKL5McJ2ArpHtdoLwssB3nD7lTHtRri-yB64WcAX-3LmTexfsfL79_Dng27dvxkXjlJBGnQ2iBR-YyYlz0lJQWCkfiyjrmrfA0Au9MwISBIEHbziGOyBSmWZT_RmlPvGiQK1Vc"><span class="font-headline-sm text-headline-sm text-text-parchment tracking-tight">BookVault</span></div><div class="flex items-center gap-space-xs"><button aria-label="Search library" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-raised transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-6 gap-space-lg">
+<section class="flex flex-col gap-space-sm pt-space-xs">
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-3.5 text-[20px] text-primary select-none pointer-events-none">search</span>
+<input class="w-full h-12 pl-11 pr-11 bg-surface-container rounded-lg font-body-md text-body-md text-text-parchment placeholder-text-muted focus:outline-none focus:bg-surface-elevated transition-colors shadow-sm" id="searchInput" placeholder="Search books, authors..." type="text" value="Frank Herbert">
+<button aria-label="Clear search input" class="absolute right-3 w-7 h-7 flex items-center justify-center rounded-full bg-surface-variant/70 text-on-surface-variant hover:text-text-parchment active:scale-95 transition-all" id="clearSearchBtn">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-label-md text-text-muted" id="resultsCount">6 results found</span>
+</div>
+<div class="flex items-center gap-1.5">
+
+</div>
+</div>
+</section>
+<div class="grid grid-cols-2 gap-x-3.5 gap-y-6" id="resultsGrid">
+<div class="group flex flex-col w-full bg-surface-container-low rounded-lg p-2.5 shadow-md hover:bg-surface-container transition-all duration-300">
+<div class="relative w-full aspect-[2/3] rounded-md overflow-hidden bg-surface-container-lowest shadow-[0_6px_16px_rgba(0,0,0,0.65)]">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Vintage hardcover book cover of Dune by Frank Herbert with minimalist desert dunes under twin moons in ochre and midnight charcoal tones, classical textured typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6VT3t26iWg-blnYHObmNtIAgudCx1Mo-IUIljEkrMbeKetxW63nnL6mwa28SUmKC0IB2Zb431oPzhXiZqjMY0u_AlXcnUoH5IiewRTpqyRNoda1zK9njXn1lPbIrQocaiFYBPoWtGLdfwjNRabjlcGyh8dt7ohltylrpSmG25LMANgbwmNHKBo0cSUtlDGxVGmCtnVDqMH-0VEIXA5liJn8qw8I34RhOFJkgangk">
+<div class="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/40 to-transparent pointer-events-none"></div>
+</div>
+<div class="flex flex-col mt-2.5 gap-0.5">
+
+<h3 class="font-headline-sm text-headline-sm text-text-parchment line-clamp-1 group-hover:text-primary transition-colors">Dune</h3>
+<p class="font-body-sm text-body-sm text-text-muted truncate">Frank Herbert</p>
+</div>
+</div>
+<div class="group flex flex-col w-full bg-surface-container-low rounded-lg p-2.5 shadow-md hover:bg-surface-container transition-all duration-300">
+<div class="relative w-full aspect-[2/3] rounded-md overflow-hidden bg-surface-container-lowest shadow-[0_6px_16px_rgba(0,0,0,0.65)]">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Technical handbook cover Clean Code by Robert C Martin with dark aesthetic, subtle gold typography accents, and elegant clean geometric layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-s1tsjr2fkBakLya8WpdxApTB6FNDRpgvrk1PNG7v_VbsxymCK0u_n39U5x8gq1VgPyn3mKYpdWHRiTUun2gBzfTXMYWmvGIoRIIE6-v1DsPoFE1PDWqkhGkPlZawh9mLCa-fP9k3X0-s3PclCgD9_ybgS-6JaVvgsVv_puKCsWfCbwUN8OYBKNWE_y3NGyGlBC_KAzSnXzpkARNqTjX0E-HkssW9mVinIBYfbHo">
+<div class="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/40 to-transparent pointer-events-none"></div>
+</div>
+<div class="flex flex-col mt-2.5 gap-0.5">
+
+<h3 class="font-headline-sm text-headline-sm text-text-parchment line-clamp-1 group-hover:text-primary transition-colors">Clean Code</h3>
+<p class="font-body-sm text-body-sm text-text-muted truncate">Robert C. Martin</p>
+</div>
+</div>
+<div class="group flex flex-col w-full bg-surface-container-low rounded-lg p-2.5 shadow-md hover:bg-surface-container transition-all duration-300">
+<div class="relative w-full aspect-[2/3] rounded-md overflow-hidden bg-surface-container-lowest shadow-[0_6px_16px_rgba(0,0,0,0.65)]">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Atmospheric dystopian book cover for 1984 by George Orwell featuring watchful eye silhouette in deep graphite and muted brass tones on aged cloth canvas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBN_Vdv6ph4I56_1lHWxGu_yq89l1UOoW5xO73GLCj_uZ1K5TPP2oVuONK5bJL3EtAv84sRacYFfjVroNd4g7zFBA9NUwwR2cSRXlojVEW3eQgunVL7uouM8n-j6y2kcCX91B7d4VbnobdyHCJ9tutSeoUy9KdeB1FkpH10uWm4oAJ3AA-1-j45xPIhtg2hHdTBxZXx7od3SQ2Pg5oajiIBNhC9JSFp-_44y-sshs">
+<div class="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/40 to-transparent pointer-events-none"></div>
+</div>
+<div class="flex flex-col mt-2.5 gap-0.5">
+
+<h3 class="font-headline-sm text-headline-sm text-text-parchment line-clamp-1 group-hover:text-primary transition-colors">1984</h3>
+<p class="font-body-sm text-body-sm text-text-muted truncate">George Orwell</p>
+</div>
+</div>
+<div class="group flex flex-col w-full bg-surface-container-low rounded-lg p-2.5 shadow-md hover:bg-surface-container transition-all duration-300">
+<div class="relative w-full aspect-[2/3] rounded-md overflow-hidden bg-surface-container-lowest shadow-[0_6px_16px_rgba(0,0,0,0.65)]">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Classic fantasy edition cover of The Hobbit by JRR Tolkien illustrating lonely mountain silhouettes, gold foil runes, and deep forest hues on midnight canvas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT70LWYVnnSnkq4HVHPSsRj4yb5xAcIP8-MoUGAA6K1uLjRcRh98iJo5Uqputlh5F-tOrjvhXCFNmEKNwHanH4Y_XanYeHDJiZycorgOM3-_Rv0v9ACffhgbVSB3Qa1PrUwP1b7ztoioDVsg45vJS5f8ZicY964qh2OZ51ngzD8PVNmXn3PbXU4zZ5p_4o_ICPvJZpl_-76YsDuy6QFIV5ObgVDZRJxyptw5bbcbw">
+<div class="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/40 to-transparent pointer-events-none"></div>
+</div>
+<div class="flex flex-col mt-2.5 gap-0.5">
+
+<h3 class="font-headline-sm text-headline-sm text-text-parchment line-clamp-1 group-hover:text-primary transition-colors">The Hobbit</h3>
+<p class="font-body-sm text-body-sm text-text-muted truncate">J.R.R. Tolkien</p>
+</div>
+</div>
+<div class="group flex flex-col w-full bg-surface-container-low rounded-lg p-2.5 shadow-md hover:bg-surface-container transition-all duration-300">
+<div class="relative w-full aspect-[2/3] rounded-md overflow-hidden bg-surface-container-lowest shadow-[0_6px_16px_rgba(0,0,0,0.65)]">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Classic technical book cover for The Pragmatic Programmer with vintage typographic seal, gold foil debossing on rich dark slate texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiAeLI-qfZ9-MRvIAovjA3CJ_vhYduNLVlv5DOIHkkIwip8QAAg11ZiPB_c7j_JsO028WfOausY8fT1FYPtNwIJTcUwZUfUeKBgPgOac2-gjTdp_xgHxgKI9FXVgUuHR8vxej8gD5qo7ADfRudNv2BibYjBgnT9p5FdoUmj5xjQ5ZLeFKfq2QXxZ9wWakmH8jk3ePvtgbnlh4wN5UvgteaSWtzsOOztKCSzJdld4k">
+<div class="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/40 to-transparent pointer-events-none"></div>
+</div>
+<div class="flex flex-col mt-2.5 gap-0.5">
+
+<h3 class="font-headline-sm text-headline-sm text-text-parchment line-clamp-1 group-hover:text-primary transition-colors">The Pragmatic Programmer</h3>
+<p class="font-body-sm text-body-sm text-text-muted truncate">Andrew Hunt, David Thomas</p>
+</div>
+</div>
+<div class="group flex flex-col w-full bg-surface-container-low rounded-lg p-2.5 shadow-md hover:bg-surface-container transition-all duration-300">
+<div class="relative w-full aspect-[2/3] rounded-md overflow-hidden bg-surface-container-lowest shadow-[0_6px_16px_rgba(0,0,0,0.65)]">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Elegant literary cover for The Little Prince by Antoine de Saint-Exupery with solitary astroid, golden starfield, and warm poetic illustration on nocturnal paper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD57G6k0yWpWvEHKxWj6YSsqzsw9Fj6SgGvyz9RN0kDzBbCa1HXrhDx7Gll-bSKvyFccdomJBQbBp25tLyYzq8oRL_R9w9UXU8KdohhXlyiAfjFEOIvQ3lWPBBQBUWNh43J7-fbhNvnhJ-miCTeY-0r-IdtQoQ5yKhC-FUvGTg9Xi1BPwUpTm5qP6qVd1bxg481ynlDetPZRxDZR0rHEcYTN5OEKMgnzTkkx6zEdVM">
+<div class="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/40 to-transparent pointer-events-none"></div>
+</div>
+<div class="flex flex-col mt-2.5 gap-0.5">
+
+<h3 class="font-headline-sm text-headline-sm text-text-parchment line-clamp-1 group-hover:text-primary transition-colors">The Little Prince</h3>
+<p class="font-body-sm text-body-sm text-text-muted truncate">Antoine de Saint-Exupéry</p>
+</div>
+</div>
+</div>
+<div class="hidden flex-col items-center justify-center py-12 px-6 text-center bg-surface-container-low/60 rounded-xl my-4" id="emptyState">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-primary mb-3 shadow-inner">
+<span class="material-symbols-outlined text-[28px]">search_off</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-text-parchment mb-1">Silence in the Stacks</h4>
+<p class="font-body-sm text-body-sm text-text-muted max-w-xs mb-4">No matching manuscripts found for this query in the private vault archive.</p>
+<button class="px-4 py-2 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-md hover:bg-accent-brass-hover transition-colors" id="resetSearchBtn">
+      Browse All Archives
+    </button>
+</div>
+
+</div>
+<script>
+  (function initExploreScreen() {
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearSearchBtn');
+    const resultsGrid = document.getElementById('resultsGrid');
+    const emptyState = document.getElementById('emptyState');
+    const resultsCount = document.getElementById('resultsCount');
+    const resetBtn = document.getElementById('resetSearchBtn');
+
+    function updateState(query) {
+      const q = query.trim().toLowerCase();
+      if (!q) {
+        resultsGrid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+        resultsCount.textContent = '0 results found';
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+        resultsGrid.classList.remove('hidden');
+        resultsCount.textContent = '6 results found';
+      }
+    }
+
+    if (clearBtn && searchInput) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchInput.focus();
+        updateState('');
+      });
+    }
+
+    if (resetBtn && searchInput) {
+      resetBtn.addEventListener('click', () => {
+        searchInput.value = 'Frank Herbert';
+        updateState('Frank Herbert');
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        updateState(e.target.value);
+      });
+    }
+
+    const bookmarkBtns = document.querySelectorAll('.bookmark-btn');
+    bookmarkBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          const isSaved = icon.textContent.trim() === 'bookmark';
+          icon.textContent = isSaved ? 'bookmark_add' : 'bookmark';
+          if (!isSaved) {
+            btn.classList.add('text-primary');
+            btn.classList.remove('text-text-muted');
+            icon.style.fontVariationSettings = "'FILL' 1";
+          } else {
+            btn.classList.remove('text-primary');
+            btn.classList.add('text-text-muted');
+            icon.style.fontVariationSettings = "'FILL' 0";
+          }
+        }
+      });
+    });
+
+    const navExplore = document.querySelector('nav [data-path="bookvault-explore"]');
+    if (navExplore) {
+      const activeClasses = (navExplore.parentElement.getAttribute('data-active-classes') || 'text-primary bg-primary-container/15 font-semibold').split(' ');
+      navExplore.parentElement.querySelectorAll('a').forEach(tab => {
+        tab.classList.remove(...activeClasses);
+        tab.classList.add('text-on-surface-variant');
+      });
+      navExplore.classList.remove('text-on-surface-variant');
+      navExplore.classList.add(...activeClasses);
+      const exploreIcon = navExplore.querySelector('.material-symbols-outlined');
+      if (exploreIcon) {
+        exploreIcon.style.fontVariationSettings = "'FILL' 1";
+      }
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-base/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.6)]" data-active-classes="text-primary bg-primary-container/15 font-semibold"><div class="flex items-center justify-around h-16 px-space-sm max-w-sm mx-auto"><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] px-space-md py-1 rounded-xl text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="bookvault-home" href="#"><span class="material-symbols-outlined text-[22px]">auto_stories</span><span class="font-label-sm text-label-sm tracking-wide mt-0.5">Home</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] px-space-md py-1 rounded-xl text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="bookvault-explore" href="#"><span class="material-symbols-outlined text-[22px]">explore</span><span class="font-label-sm text-label-sm tracking-wide mt-0.5">Explore</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] px-space-md py-1 rounded-xl text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="bookvault-library" href="#"><span class="material-symbols-outlined text-[22px]">local_library</span><span class="font-label-sm text-label-sm tracking-wide mt-0.5">Library</span></a></div></nav>
+
+
+</body></html>
