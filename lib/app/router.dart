@@ -1,12 +1,22 @@
 import 'package:go_router/go_router.dart';
 
-import '../../app/app_shell.dart';
-import '../../features/book_details/presentation/book_details_page.dart';
-import '../../features/explore/presentation/explore_page.dart';
-import '../../features/home/presentation/home_page.dart';
-import '../../features/library/presentation/library_page.dart';
-import '../../features/onboarding/presentation/onboarding_page.dart';
-import 'app_routes.dart';
+import 'app_shell.dart';
+import '../features/book_details/book_details_page.dart';
+import '../features/explore/explore_page.dart';
+import '../features/home/home_page.dart';
+import '../features/library/library_page.dart';
+import '../features/onboarding/onboarding_page.dart';
+
+/// Caminhos das rotas do app.
+abstract final class AppRoutes {
+  static const String onboarding = '/onboarding';
+  static const String home = '/home';
+  static const String explore = '/explore';
+  static const String library = '/library';
+  static const String bookDetails = '/book/:id';
+
+  static String bookDetailsOf(String id) => '/book/${Uri.encodeComponent(id)}';
+}
 
 /// Cria o roteador do app.
 ///

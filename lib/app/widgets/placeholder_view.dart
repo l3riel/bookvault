@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/app_spacing.dart';
+import '../theme/app_spacing.dart';
 
 /// Conteúdo provisório de uma tela ainda não implementada: mostra só o título.
 class PlaceholderView extends StatelessWidget {

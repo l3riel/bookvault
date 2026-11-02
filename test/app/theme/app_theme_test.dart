@@ -1,6 +1,6 @@
-import 'package:bookvault/core/theme/app_colors.dart';
-import 'package:bookvault/core/theme/app_theme.dart';
-import 'package:bookvault/core/theme/app_typography.dart';
+import 'package:bookvault/app/theme/app_colors.dart';
+import 'package:bookvault/app/theme/app_theme.dart';
+import 'package:bookvault/app/theme/app_typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

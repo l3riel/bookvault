@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/widgets/placeholder_view.dart';
+import '../../app/widgets/placeholder_view.dart';
 
 /// Tela de Explorar. Conteúdo real em etapa futura do plano.
 class ExplorePage extends StatelessWidget {

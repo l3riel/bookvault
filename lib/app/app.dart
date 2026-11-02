@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../core/theme/app_theme.dart';
+import 'theme/app_theme.dart';
 import 'app_dependencies.dart';
 
 /// Widget raiz: aplica o tema e as rotas.

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app/app.dart';
 import 'app/app_dependencies.dart';
-import 'core/routing/app_router.dart';
+import 'app/router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

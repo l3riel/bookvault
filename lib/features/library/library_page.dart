@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/widgets/placeholder_view.dart';
+import '../../app/widgets/placeholder_view.dart';
 
 /// Tela de Biblioteca. Conteúdo real em etapa futura do plano.
 class LibraryPage extends StatelessWidget {

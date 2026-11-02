@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../core/theme/app_colors.dart';
+import 'theme/app_colors.dart';
 
 /// Estrutura das abas principais: conteúdo da aba ativa + barra inferior.
 class AppShell extends StatelessWidget {
