@@ -1,7 +1,7 @@
 # Plano de Execução — BookVault
 
 > **Dono:** Gabriel Arthur (arquiteto) · Fonte: `BookVault_Plano_de_Execucao.pdf`
-> Estrutura de trabalho incremental para o MVP mobile. Produto em [`PRD.md`](PRD.md), arquitetura em [`ARCHITECTURE.md`](ARCHITECTURE.md), design em [`design/DESIGN.md`](design/DESIGN.md).
+> Estrutura de trabalho incremental para o MVP mobile. Produto em [`PRD.md`](PRD.md), arquitetura em [`ARCHITECTURE.md`](ARCHITECTURE.md), design em [`DESIGN.md`](../DESIGN.md).
 
 ## 1. Princípios
 - Implementar somente o escopo do MVP.

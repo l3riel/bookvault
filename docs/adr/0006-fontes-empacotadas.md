@@ -1,7 +1,7 @@
 # ADR 0006 — Fontes Newsreader e DM Sans empacotadas no app
 
 - **Data:** 2026-11-02
-- **Status:** proposta
+- **Status:** aceita
 
 ## Contexto
 O design system usa Newsreader (títulos e textos longos) e DM Sans (interface). O Flutter não traz essas fontes, e o app precisa funcionar offline.

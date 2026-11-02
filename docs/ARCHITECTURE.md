@@ -6,7 +6,7 @@
 - Persistência local: **SharedPreferences** ([ADR 0003](adr/0003-shared-preferences-persistencia.md)).
 - Livros: **Google Books API** via **Dio** ([ADR 0004](adr/0004-google-books-dio.md)).
 - Navegação: **GoRouter** ([ADR 0005](adr/0005-go-router-navegacao.md)).
-- Fontes: Newsreader e DM Sans empacotadas ([ADR 0006](adr/0006-fontes-empacotadas.md), proposta).
+- Fontes: Newsreader e DM Sans empacotadas ([ADR 0006](adr/0006-fontes-empacotadas.md)).
 - Injeção de dependências manual, montada no `main.dart`.
 - Qualidade: `flutter analyze` (regras estritas em `analysis_options.yaml`) e `flutter test`, rodados no CI a cada push.
 

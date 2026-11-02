@@ -1,6 +1,6 @@
 # PRD — BookVault
 
-> **Dono:** Gabriel Arthur (arquiteto) · **Status:** rascunho (preenchido pela IA a partir do [Plano de Execução](PLANO.md) e do [design](design/); aguarda revisão)
+> **Dono:** Gabriel Arthur (arquiteto) · **Status:** rascunho (preenchido pela IA a partir do [Plano de Execução](PLANO.md) e do [design](../design/); aguarda revisão)
 > Este documento é a fonte da verdade do *o quê* e do *porquê*. A IA implementa a partir daqui e das specs em `docs/specs/`; ela não inventa requisito.
 
 ## 1. Problema
@@ -19,7 +19,7 @@ Leitores que querem descobrir livros pelos gêneros de que gostam e manter uma e
 |---|---|---|---|
 | F0 | Preparação: tema, rotas, estrutura e injeção de dependências | Must | [S01](specs/S01-preparacao.md) |
 | F1 | Onboarding: nome e um ou mais gêneros, salvos no aparelho; só aparece no primeiro acesso | Must | — |
-| F2 | Biblioteca pessoal: listar, filtrar por status (Quero ler, Lendo, Concluído), mudar status, remover | Must | — |
+| F2 | Biblioteca pessoal: listar, filtrar por status (Todos, Quero ler, Lendo, Lidos), mudar status, remover | Must | — |
 | F3 | Explore: busca por título ou autor na Google Books API, resultados em grid | Must | — |
 | F4 | Detalhes do livro: capa, título, autores, descrição, editora, data, páginas; adicionar/remover da biblioteca | Must | — |
 | F5 | Home: saudação com o nome e recomendações pelos gêneros escolhidos | Must | — |
@@ -35,7 +35,7 @@ Leitores que querem descobrir livros pelos gêneros de que gostam e manter uma e
 - Offline: biblioteca e preferências funcionam sem internet; busca e recomendações exigem conexão e tratam a falta dela.
 - Estados de loading, erro e vazio em todas as telas com dados.
 - Respeitar SafeArea e alvos de toque de 48px.
-- Idioma da interface: **a definir** (o design está em inglês; o CLAUDE.md pede pt-BR).
+- Idioma da interface: **pt-BR** (decisão do arquiteto; o design do Stitch está em inglês e serve só como referência visual).
 
 ## 7. Critérios de sucesso
 - Todos os itens da Definition of Done do [plano](PLANO.md#5-definition-of-done-do-mvp) marcados.
