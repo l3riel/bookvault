@@ -6,6 +6,7 @@ import '../../app/router.dart';
 import '../../app/theme/app_colors.dart';
 import '../../app/theme/app_spacing.dart';
 import '../../app/widgets/brand_app_bar.dart';
+import '../../app/widgets/confirm_removal_dialog.dart';
 import '../../models/user_book.dart';
 import '../../stores/library_store.dart';
 import 'widgets/book_actions_sheet.dart';
