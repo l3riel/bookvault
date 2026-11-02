@@ -1,7 +1,7 @@
 # Spec — Biblioteca pessoal (Etapa 06)
 
 - **ID:** F2 do `docs/PRD.md` · Etapa 06 do [Plano de Execução](../PLANO.md)
-- **Status:** rascunho
+- **Status:** aprovada
 - **Pastas:** `lib/features/library/`, `lib/stores/library_store.dart`, `lib/app/widgets/`, `lib/app/app_dependencies.dart`
 - **Referência visual:** [`design/library.png`](../../design/library.png)
 
@@ -16,7 +16,7 @@ O usuário vê os livros que salvou, filtra por status, muda o status e remove l
 1. **Estado:** `LibraryStore` (MobX) com a lista de `UserBook`, o filtro ativo (`null` = Todos), a lista filtrada e a contagem por status. Ações: `load`, `setFilter`, `changeStatus`, `remove`. Usa só o `LibraryRepository`.
 2. A `LibraryStore` é **única no app** (criada no `AppDependencies`), para que livros adicionados nos Detalhes (Etapa 07) apareçam na Biblioteca sem recarregar.
 3. Ordem: do mais recente para o mais antigo (já vem assim do repositório).
-4. **Filtros:** Todos, Quero ler, Lendo, Concluídos, cada um com a contagem entre parênteses. O filtro esconde os livros de outros status.
+4. **Filtros:** Todos, Quero ler, Lendo, Concluídos, cada um com a contagem entre parênteses. Como no protótipo, o filtro **apaga** (deixa esmaecidos) os livros de outros status, sem escondê-los; eles continuam tocáveis.
 5. Mudar status e remover gravam no aparelho e atualizam a tela na hora.
 6. Tocar num livro abre os Detalhes (`/book/<id>`).
 7. **Capas:** carregadas da internet; sem conexão (ou sem capa), aparece um marcador com o título, sem quebrar o layout. Guardar as imagens offline fica fora do MVP (exigiria pacote novo).
@@ -34,8 +34,8 @@ Fiel ao protótipo, com textos em pt-BR:
 | Grade de 2 colunas: capa com selo de status, título (Newsreader) e autor (cinza) | igual |
 
 - **Vazio (sem livros):** ícone, "Sua biblioteca está vazia", "Encontre livros em Explorar e salve aqui." e botão "Explorar livros".
-- **Vazio no filtro:** "Nenhum livro em <status>."
-- **Mudar status / remover:** ver pendência 1.
+- **Filtro sem livros:** aviso "Nenhum livro em <status>." acima da grade (os demais aparecem apagados).
+- **Mudar status / remover:** segurar o dedo no livro ou tocar no ⋮ do card abre uma folha inferior com os três status (o atual marcado) e "Remover da biblioteca"; remover pede confirmação.
 
 ## Dados
 Sem modelo novo. Usa `UserBook`, `ReadingStatus` e o `LibraryRepository`.
@@ -43,17 +43,15 @@ Sem modelo novo. Usa `UserBook`, `ReadingStatus` e o `LibraryRepository`.
 ## Critérios de aceite (viram testes)
 - [ ] Dada uma biblioteca com livros salvos, quando abro a aba Biblioteca (mesmo sem internet), então vejo os livros com título, autor e selo de status.
 - [ ] Dada uma biblioteca vazia, então vejo o estado vazio e o botão "Explorar livros" leva à aba Explorar.
-- [ ] Dados livros em status diferentes, quando escolho o filtro "Lendo", então só aparecem os livros em leitura, e os chips mostram as contagens certas.
-- [ ] Dado um livro "Quero ler", quando mudo o status para "Concluído", então o selo muda na hora e a mudança persiste ao reabrir.
-- [ ] Dado um livro na biblioteca, quando o removo, então ele some na hora e não volta ao reabrir.
+- [ ] Dados livros em status diferentes, quando escolho o filtro "Lendo", então os livros em leitura ficam em destaque e os demais apagados, e os chips mostram as contagens certas.
+- [ ] Dado um livro "Quero ler", quando mudo o status para "Concluído" pela folha inferior, então o selo muda na hora e a mudança persiste ao reabrir.
+- [ ] Dado um livro na biblioteca, quando o removo e confirmo, então ele some na hora e não volta ao reabrir.
 - [ ] Dado um livro na biblioteca, quando toco nele, então abrem os Detalhes desse livro.
 - [ ] Dado um livro sem capa, então aparece o marcador com o título.
 
 ## Fora de escopo desta spec
 Adicionar livros (vem pelos Detalhes, Etapa 07), busca dentro da biblioteca, ordenação diferente, cache de capas.
 
-## Pendências para aprovar
-1. **Como mudar status e remover** (o protótipo não mostra):
-   (a) **proposta:** segurar o dedo no livro (ou tocar num botão "⋮" no card) abre uma folha inferior com os três status e "Remover da biblioteca"; remover pede confirmação.
-   (b) só pela tela de Detalhes (Etapa 07); a Biblioteca fica apenas para ver e filtrar.
-2. **Filtro:** o protótipo deixa os livros de outros status **apagados** em vez de escondê-los. Proposta: **esconder** (mais claro para "filtrar"). Prefere apagar como no protótipo?
+## Decisões do arquiteto
+1. Mudar status e remover por folha inferior (segurar o livro ou tocar no ⋮), com confirmação para remover.
+2. O filtro apaga os livros de outros status, como no protótipo, em vez de escondê-los.
