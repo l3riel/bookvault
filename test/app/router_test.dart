@@ -1,6 +1,3 @@
-import 'package:bookvault/app/app.dart';
-import 'package:bookvault/app/app_dependencies.dart';
-import 'package:bookvault/core/network/dio_client.dart';
 import 'package:bookvault/app/router.dart';
 import 'package:bookvault/features/book_details/book_details_page.dart';
 import 'package:bookvault/features/explore/explore_page.dart';
@@ -10,22 +7,16 @@ import 'package:bookvault/features/onboarding/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../helpers/pump_app.dart';
 
 void main() {
-  setUp(() => SharedPreferences.setMockInitialValues({}));
-
   Future<GoRouter> pumpApp(WidgetTester tester, {bool onboarded = true}) async {
-    final dependencies = AppDependencies(
-      preferences: await SharedPreferences.getInstance(),
-      dio: createDioClient(),
+    final app = await pumpBookVault(
+      tester,
+      preferences: onboarded ? onboardedUser : null,
     );
-    final router = createAppRouter(isOnboarded: () => onboarded);
-    await tester.pumpWidget(
-      BookVaultApp(dependencies: dependencies, router: router),
-    );
-    await tester.pumpAndSettle();
-    return router;
+    return app.router;
   }
 
   int selectedTab(WidgetTester tester) =>

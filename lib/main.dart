@@ -7,8 +7,6 @@ import 'app/router.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final dependencies = await AppDependencies.create();
-
-  // Até a Etapa 05 não há preferências salvas: o app abre direto no Início.
-  final router = createAppRouter(isOnboarded: () => true);
+  final router = createAppRouter(dependencies);
   runApp(BookVaultApp(dependencies: dependencies, router: router));
 }

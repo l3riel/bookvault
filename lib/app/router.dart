@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 
+import '../stores/onboarding_store.dart';
+import 'app_dependencies.dart';
 import 'app_shell.dart';
 import '../features/book_details/book_details_page.dart';
 import '../features/explore/explore_page.dart';
@@ -20,14 +22,15 @@ abstract final class AppRoutes {
 
 /// Cria o roteador do app.
 ///
-/// [isOnboarded] diz se o usuário já concluiu o onboarding; enquanto não
-/// concluiu, toda navegação é redirecionada para [AppRoutes.onboarding].
-GoRouter createAppRouter({required bool Function() isOnboarded}) {
+/// Sem preferências salvas, toda navegação vai para o onboarding; com elas,
+/// o onboarding não abre mais (S05).
+GoRouter createAppRouter(AppDependencies dependencies) {
+  final preferences = dependencies.preferencesRepository;
   return GoRouter(
     initialLocation: AppRoutes.home,
     redirect: (context, state) {
       final atOnboarding = state.matchedLocation == AppRoutes.onboarding;
-      if (!isOnboarded()) {
+      if (preferences.load() == null) {
         return atOnboarding ? null : AppRoutes.onboarding;
       }
       return atOnboarding ? AppRoutes.home : null;
@@ -35,7 +38,8 @@ GoRouter createAppRouter({required bool Function() isOnboarded}) {
     routes: [
       GoRoute(
         path: AppRoutes.onboarding,
-        builder: (context, state) => const OnboardingPage(),
+        builder: (context, state) =>
+            OnboardingPage(createStore: () => OnboardingStore(preferences)),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>

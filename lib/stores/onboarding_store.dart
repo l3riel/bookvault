@@ -6,13 +6,14 @@ import '../models/user_preferences.dart';
 
 part 'onboarding_store.g.dart';
 
+/// Tamanho máximo do nome no onboarding.
+const int maxNameLength = 40;
+
 /// Estado do onboarding: nome, gêneros escolhidos e envio (S05).
 class OnboardingStore = _OnboardingStore with _$OnboardingStore;
 
 abstract class _OnboardingStore with Store {
   _OnboardingStore(this._repository);
-
-  static const int maxNameLength = 40;
 
   final PreferencesRepository _repository;
 
