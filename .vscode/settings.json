@@ -1,0 +1,24 @@
+{
+  "editor.formatOnSave": true,
+  "editor.rulers": [80],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.tabSize": 2,
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.wordBasedSuggestions": "off"
+  },
+  "dart.flutterSdkPath": "C:\Users\calop\flutter",
+  "dart.lineLength": 80,
+  "dart.previewFlutterUiGuides": true,
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.dart_tool": true,
+    "**/build": true
+  }
+}
