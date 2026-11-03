@@ -25,6 +25,9 @@ class BookCover extends StatelessWidget {
               width: double.infinity,
               height: double.infinity,
               semanticLabel: 'Capa de $title',
+              // As capas do Google não liberam CORS: na web, cai para um
+              // <img> do HTML em vez de falhar (S09). Sem efeito no Android.
+              webHtmlElementStrategy: WebHtmlElementStrategy.fallback,
               errorBuilder: (context, error, stackTrace) => placeholder,
               loadingBuilder: (context, child, progress) =>
                   progress == null ? child : placeholder,

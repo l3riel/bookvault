@@ -43,6 +43,21 @@ void main() {
     );
   });
 
+  testWidgets('capa usa <img> do HTML na web quando o CORS bloqueia', (
+    tester,
+  ) async {
+    await pump(
+      tester,
+      const BookCover(title: 'Duna', imageUrl: 'https://books.google.com/c'),
+    );
+
+    expect(
+      (tester.widget<Image>(find.byType(Image)).image as NetworkImage)
+          .webHtmlElementStrategy,
+      WebHtmlElementStrategy.fallback,
+    );
+  });
+
   testWidgets('selo mostra o rótulo do status', (tester) async {
     for (final status in ReadingStatus.values) {
       await pump(tester, StatusBadge(status: status));
