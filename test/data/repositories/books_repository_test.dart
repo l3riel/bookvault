@@ -119,6 +119,8 @@ void main() {
       DioExceptionType.unknown: BooksErrorType.noConnection,
       DioExceptionType.connectionTimeout: BooksErrorType.timeout,
       DioExceptionType.receiveTimeout: BooksErrorType.timeout,
+      DioExceptionType.badCertificate: BooksErrorType.server,
+      DioExceptionType.cancel: BooksErrorType.server,
     };
     cases.forEach((dioType, expected) {
       test('${dioType.name} vira ${expected.name}', () async {
@@ -146,6 +148,13 @@ void main() {
       await expectLater(
         repository.search('duna'),
         throwsBooksError(BooksErrorType.server),
+      );
+    });
+
+    test('BooksException mostra o tipo no toString', () {
+      expect(
+        const BooksException(BooksErrorType.timeout).toString(),
+        'BooksException(timeout)',
       );
     });
 
