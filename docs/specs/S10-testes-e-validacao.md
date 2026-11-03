@@ -1,7 +1,7 @@
 # Spec — Testes e validação (Etapa 10)
 
 - **ID:** Etapa 10 do [Plano de Execução](../PLANO.md)
-- **Status:** rascunho
+- **Status:** aprovada
 - **Pastas:** `test/`, `docs/`
 
 ## Objetivo
@@ -21,7 +21,7 @@ Fechar o MVP com evidência: cobrir com teste os comportamentos que ainda não t
    - **Home:** sem gêneros salvos, mostra o estado vazio.
    - **Repositório:** o erro de certificado ou cancelamento é traduzido para `BooksException`.
    - **Modelos:** `==` e `hashCode` coerentes em `UserPreferences` e `UserBook`; `copyWith` de `UserBook` mantendo o status.
-2. **`toString` não ganha teste.** É só depuração; perseguir 100% não é meta.
+2. **Meta de 100% das linhas** (sem os `.g.dart`), incluindo `toString`: um texto de depuração legível também é contrato.
 3. **Roteiro manual escrito** em `docs/TESTES-MANUAIS.md`. Cada passo tem o que fazer e o que deve aparecer. Ele cobre os fluxos do §5, o modo avião e o Chrome, e é executado no emulador nesta etapa.
 4. **DoD marcada com evidência:** cada item do §5 recebe `[x]` e aponta para o teste ou o passo do roteiro que o comprova.
 5. A definição de pronto (`dart format`, `flutter analyze`, `flutter test`) passa em cada commit.
@@ -30,21 +30,15 @@ Fechar o MVP com evidência: cobrir com teste os comportamentos que ainda não t
 - [ ] Cada lacuna da regra 1 tem teste e o teste passa.
 - [ ] `docs/TESTES-MANUAIS.md` existe e foi executado no emulador, sem exceções no log.
 - [ ] Todos os itens do PLANO §5 marcados, cada um com a sua evidência.
-- [ ] Format, analyze e test limpos; cobertura registrada nas notas.
+- [ ] Format, analyze e test limpos; cobertura de 100% registrada nas notas.
+- [ ] Os commits estão no GitHub e a CI passou.
 
 ## Fora de escopo
 Testes de performance, testes de golden (imagem), testes em iOS.
 
-## Decisões para o arquiteto
-1. **Lacunas de cobertura:**
-   - **a)** Testar só as lacunas de comportamento da regra 1. *(recomendado)*
-   - **b)** Perseguir 100% de linhas, incluindo `toString`.
-2. **Fluxos de ponta a ponta:**
-   - **a)** Roteiro manual executado no emulador, sem pacote novo. *(recomendado)*
-   - **b)** Adicionar `integration_test` (vem com o Flutter) com 1 ou 2 fluxos automatizados. Exige uma ADR, como foi com a 0008.
-3. **Cobertura:**
-   - **a)** Só medir e registrar o número na spec. *(recomendado)*
-   - **b)** Fazer a CI falhar abaixo de um mínimo (ex.: 95%).
-4. **GitHub:** a `main` tem 78 commits que nunca passaram pela CI.
-   - **a)** Ao final, eu faço o push e confiro a CI verde. *(recomendado)*
-   - **b)** Você faz o push quando quiser.
+## Decisões
+Respostas do arquiteto em 02/11/2026: **1b 2a 3a 4a**.
+1. Cobertura de 100% das linhas, `toString` incluído.
+2. Fluxos de ponta a ponta por roteiro manual no emulador, sem `integration_test`.
+3. Cobertura medida e registrada, sem gate na CI.
+4. Ao final, a IA faz o push e confere a CI verde.
