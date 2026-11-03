@@ -4,6 +4,10 @@ import 'package:bookvault/models/reading_status.dart';
 import 'package:bookvault/models/user_preferences.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:bookvault/app/widgets/status_badge.dart';
+import 'package:bookvault/features/home/widgets/genre_shelf_row.dart';
+import 'package:bookvault/models/book.dart';
+import 'package:bookvault/models/user_book.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../helpers/fake_dio.dart';
@@ -178,5 +182,52 @@ void main() {
 
     expect(find.text('Destaque para você'), findsOneWidget);
     expect(app.api.requests, hasLength(before));
+  });
+
+  testWidgets('a lupa da barra superior abre o Explorar', (tester) async {
+    await openHome(tester);
+
+    await tester.tap(find.byTooltip('Buscar livros'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ExplorePage), findsOneWidget);
+  });
+
+  testWidgets('livro salvo mostra o selo de status na fileira', (tester) async {
+    await pumpBookVault(
+      tester,
+      preferences: const UserPreferences(name: 'Gabriel', genres: ['fantasy']),
+      library: [
+        UserBook(
+          book: const Book(id: 'earthsea', title: 'Terramar'),
+          status: ReadingStatus.reading,
+          addedAt: DateTime.utc(2026, 11, 2),
+        ),
+      ],
+      api: (options) => jsonBody(
+        searchJson([
+          volumeJson(id: 'hobbit', title: 'O Hobbit', thumbnail: null),
+          volumeJson(id: 'earthsea', title: 'Terramar', thumbnail: null),
+          volumeJson(id: 'dune', title: 'Duna', thumbnail: null),
+        ]),
+      ),
+    );
+
+    final shelf = find.byType(GenreShelfRow);
+    await tester.ensureVisible(shelf);
+    await tester.pumpAndSettle();
+
+    expect(
+      find.descendant(of: shelf, matching: find.byType(StatusBadge)),
+      findsOneWidget,
+    );
+    expect(
+      find.descendant(of: shelf, matching: find.text('Lendo')),
+      findsOneWidget,
+    );
+    expect(
+      find.descendant(of: shelf, matching: find.text('Duna')),
+      findsWidgets,
+    );
   });
 }
