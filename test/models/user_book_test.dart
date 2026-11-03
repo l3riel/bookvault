@@ -54,4 +54,22 @@ void main() {
     expect(() => UserBook.fromJson(semLivro), throwsFormatException);
     expect(() => UserBook.fromJson(dataRuim), throwsFormatException);
   });
+
+  test('copyWith sem status mantém o status atual', () {
+    final later = userBook.copyWith(addedAt: DateTime.utc(2027));
+
+    expect(later.status, ReadingStatus.wantToRead);
+    expect(later.addedAt, DateTime.utc(2027));
+  });
+
+  test('itens com os mesmos dados são iguais e têm o mesmo hash', () {
+    final copy = UserBook.fromJson(userBook.toJson());
+
+    expect(copy.hashCode, userBook.hashCode);
+    expect(userBook.copyWith(status: ReadingStatus.completed), isNot(userBook));
+  });
+
+  test('toString mostra id e status', () {
+    expect(userBook.toString(), 'UserBook(zyTCAlFPjgYC, wantToRead)');
+  });
 }

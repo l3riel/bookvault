@@ -59,4 +59,8 @@ void main() {
     expect(copy, fullBook);
     expect(copy.hashCode, fullBook.hashCode);
   });
+
+  test('toString mostra id e título', () {
+    expect(const Book(id: 'x1', title: 'Duna').toString(), 'Book(x1, Duna)');
+  });
 }
