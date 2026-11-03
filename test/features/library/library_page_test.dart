@@ -178,4 +178,19 @@ void main() {
       findsNWidgets(3),
     );
   });
+
+  testWidgets('filtro sem livros avisa que o status está vazio', (
+    tester,
+  ) async {
+    await openLibrary(
+      tester,
+      library: [_saved('dune', 'Duna', ReadingStatus.reading, 3)],
+    );
+
+    await tester.tap(await chip(tester, 'Quero ler (0)'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Nenhum livro em Quero ler.'), findsOneWidget);
+    expect(card('Duna'), findsOneWidget);
+  });
 }
