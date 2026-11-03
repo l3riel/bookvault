@@ -80,3 +80,4 @@ Roteiro para conferir o BookVault no aparelho antes de uma entrega. Cada passo d
 ## Registro de execuções
 | Data | Alvo | Resultado |
 |---|---|---|
+| 02/11/2026 | Emulador Pixel 8, API 36, instalação limpa | A–F passaram, sem exceções no log. G validado no Chrome na S09, no mesmo dia, sem mudança de código web depois |

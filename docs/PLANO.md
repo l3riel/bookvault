@@ -39,17 +39,17 @@ Ordem: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10. Compon
 - Ao fim de cada etapa: revisar arquivos, rodar `dart format .`, `flutter analyze` e `flutter test`, e registrar o que ficou pronto e o que ficou pendente. Validação só conta se os comandos foram executados.
 
 ## 5. Definition of Done do MVP
-- [ ] Onboarding cadastra nome e gêneros.
-- [ ] Preferências persistidas localmente.
-- [ ] Home com saudação e recomendações por gênero.
-- [ ] Explore pesquisa por título ou autor.
-- [ ] Detalhes mostram os metadados disponíveis.
-- [ ] Adicionar e remover livros da biblioteca.
-- [ ] Biblioteca filtra por status de leitura.
-- [ ] Atualizar o status dos livros.
-- [ ] Biblioteca funciona offline.
-- [ ] Navegação entre Home, Explore e Library.
-- [ ] Estados de loading, erro e vazio.
-- [ ] Interface segue o Nocturne Editorial.
-- [ ] `flutter analyze` e `flutter test` executados.
-- [ ] Fluxos principais testados manualmente.
+- [x] Onboarding cadastra nome e gêneros. — `test/stores/onboarding_store_test.dart`, `test/features/onboarding/`; roteiro A1–A4
+- [x] Preferências persistidas localmente. — `test/data/repositories/preferences_repository_test.dart`; roteiro A5
+- [x] Home com saudação e recomendações por gênero. — `test/stores/home_store_test.dart`, `test/features/home/`; roteiro B1–B6
+- [x] Explore pesquisa por título ou autor. — `test/stores/explore_store_test.dart`, `test/features/explore/`; roteiro C1–C3
+- [x] Detalhes mostram os metadados disponíveis. — `test/features/book_details/`; roteiro C4
+- [x] Adicionar e remover livros da biblioteca. — `test/stores/library_store_test.dart`, `test/stores/book_details_store_test.dart`; roteiro C5, D5–D7
+- [x] Biblioteca filtra por status de leitura. — `test/features/library/`; roteiro D2–D3
+- [x] Atualizar o status dos livros. — `test/features/library/`, `test/features/book_details/`; roteiro C6, D4
+- [x] Biblioteca funciona offline. — `test/data/repositories/library_repository_test.dart`; roteiro D8, F1–F2
+- [x] Navegação entre Home, Explore e Library. — `test/app/router_test.dart`; roteiro E1–E2
+- [x] Estados de loading, erro e vazio. — testes de stores e telas; roteiro C3, D3, D7, F3–F5
+- [x] Interface segue o Nocturne Editorial. — `test/app/theme/`; comparação com o Stitch na [S09](specs/S09-integracao-acabamento.md)
+- [x] `flutter analyze` e `flutter test` executados. — 170 testes, 100% de linhas, CI no GitHub ([S10](specs/S10-testes-e-validacao.md))
+- [x] Fluxos principais testados manualmente. — [roteiro](TESTES-MANUAIS.md) executado em 02/11/2026
