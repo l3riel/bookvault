@@ -1,7 +1,7 @@
 # Spec — Testes e validação (Etapa 10)
 
 - **ID:** Etapa 10 do [Plano de Execução](../PLANO.md)
-- **Status:** aprovada
+- **Status:** implementada
 - **Pastas:** `test/`, `docs/`
 
 ## Objetivo
@@ -27,11 +27,11 @@ Fechar o MVP com evidência: cobrir com teste os comportamentos que ainda não t
 5. A definição de pronto (`dart format`, `flutter analyze`, `flutter test`) passa em cada commit.
 
 ## Critérios de aceite
-- [ ] Cada lacuna da regra 1 tem teste e o teste passa.
-- [ ] `docs/TESTES-MANUAIS.md` existe e foi executado no emulador, sem exceções no log.
-- [ ] Todos os itens do PLANO §5 marcados, cada um com a sua evidência.
-- [ ] Format, analyze e test limpos; cobertura de 100% registrada nas notas.
-- [ ] Os commits estão no GitHub e a CI passou.
+- [x] Cada lacuna da regra 1 tem teste e o teste passa.
+- [x] `docs/TESTES-MANUAIS.md` existe e foi executado no emulador, sem exceções no log.
+- [x] Todos os itens do PLANO §5 marcados, cada um com a sua evidência.
+- [x] Format, analyze e test limpos; cobertura de 100% registrada nas notas.
+- [x] Os commits estão no GitHub e a CI passou.
 
 ## Fora de escopo
 Testes de performance, testes de golden (imagem), testes em iOS.
@@ -42,3 +42,11 @@ Respostas do arquiteto em 02/11/2026: **1b 2a 3a 4a**.
 2. Fluxos de ponta a ponta por roteiro manual no emulador, sem `integration_test`.
 3. Cobertura medida e registrada, sem gate na CI.
 4. Ao final, a IA faz o push e confere a CI verde.
+
+## Notas da implementação
+- **Resultado:** 170 testes (eram 157) e **100% das linhas** cobertas (1358/1358, sem os `.g.dart`). `dart format`, `flutter analyze` e `flutter test` limpos.
+- **Testes novos:** igualdade, hash, `copyWith` e `toString` dos modelos; erro de certificado e cancelamento; `toString` do `BooksException`; Home sem gêneros; aviso de filtro vazio na Biblioteca; lupa da barra superior; selo de status na fileira da Home.
+- **Roteiro manual:** [TESTES-MANUAIS.md](../TESTES-MANUAIS.md), executado em 02/11/2026 num Pixel 8 (API 36) com instalação limpa. Os blocos A–F passaram, sem exceções no log. O bloco G (Chrome) foi validado na S09, no mesmo dia, e o código web não mudou depois disso.
+- **DoD:** todos os itens do [PLANO §5](../PLANO.md) marcados, cada um com a sua evidência.
+- **GitHub:** push dos commits; a CI (`41553828431`) passou.
+- **Pendência fora do escopo:** a CI avisa que `actions/checkout@v4` usa Node 20, que está descontinuado. Ainda funciona; atualizar para a versão nova é um `ci:` separado.
