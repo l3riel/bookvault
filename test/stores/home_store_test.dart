@@ -150,4 +150,12 @@ void main() {
     expect(store.spotlight?.id, 'a');
     expect(store.shelves.single.genre, Genre.philosophy);
   });
+
+  test('sem gêneros salvos fica vazio sem chamar a API', () async {
+    final store = await storeWith([]);
+    await store.load();
+
+    expect(store.status, HomeStatus.empty);
+    expect(adapter.requests, isEmpty);
+  });
 }
